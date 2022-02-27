@@ -1,2 +1,2 @@
-# phase-1-prohect
+# phase-1-project
 Project for Phase 1
