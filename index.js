@@ -23,9 +23,32 @@ function renderFamily(member){
     
 }
 
+function fetchAnimalKingdom(){
+    fetch("https://queue-times.com/en-US/parks/7/queue_times.json",
+    {
+      
+    }
+    )
+    .then(r => r.json())
+    .then(function (r){
+        
+        cleanUpFetch(r)
+        })
+}
 
+function cleanUpFetch(lands){
+    let landProp = lands.lands
+      for(i=0; i<landProp.length; i++){
+        landProp[i].rides.forEach(ride=>console.log(ride))
+  
+  }
+       
+    
+}
+function renderRides(ride){
+    console.log(ride)
+}
 
-
-
+fetchAnimalKingdom()
 fetchFamily()
 })
