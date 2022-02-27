@@ -11,3 +11,16 @@ header{
     background-color: black;
     color:white;
 }
+#peopleSelectors {
+    display: flex;
+    overflow-x: auto;
+    margin: 1rem 0;
+    max-width: calc(100vw - 2rem);
+  }
+
+.boxButton{
+    border:1px solid;
+    padding: 4px;
+    display:inline-block;
+    margin:auto ;
+}
