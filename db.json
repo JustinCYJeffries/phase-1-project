@@ -1,1 +1,189 @@
+{
+    "jeffriesFamily":[
+        {
+            "id": 1,
+            "name":"Megan",
+            "height":"over48",
+            "favorites":[
+                {
+                    "name":"Jungle Cruise",
+                    "rideValue":1
+                  },
+                {
+                    "name":"Kilimanjaro Safaris",
+                    "rideValue":2
+                  },
+                {
+                    "name":"Millennium Falcon: Smugglers Run",
+                    "rideValue":3
+                  },
+                {
+                    "name":"Pirates of the Caribbean",
+                    "rideValue":4
+                  },
+                {
+                    "name":"Big Thunder Mountain Railroad",
+                    "rideValue":5
+                  },
+                {
+                    "name":"Star Wars: Rise of the Resistance",
+                    "rideValue":6
+                  },
+                {
+                    "name":"it's a small world",
+                    "rideValue":7
+                  },
+                {
+                    "name":"Soarin'",
+                    "rideValue":8
+                  },
+                {
+                    "name":"Rock 'n' Roller Coaster Starring Aerosmith",
+                    "rideValue":9
+                  },
+                {
+                    "name":"Buzz Lightyear's Space Ranger Spin",
+                    "rideValue":10
+                  }
+            ]
 
+        },
+        {
+            "id": 2,
+            "name":"Elara",
+            "height":"over38",
+            "favorites":[
+                {
+                    "name":"Prince Charming Regal Carrousel",
+                    "rideValue":1
+                  },
+                {
+                    "name":"Frozen Ever After",
+                    "rideValue":2
+                  },
+                {
+                    "name":"Millennium Falcon: Smugglers Run",
+                    "rideValue":3
+                  },
+                {
+                    "name":"Mickey and Minnie's Runaway Railway",
+                    "rideValue":4
+                  },
+                {
+                    "name":"Dumbo the Flying Elephant",
+                    "rideValue":5
+                  },
+                {
+                    "name":"Mad Tea Party",
+                    "rideValue":6
+                  },
+                {
+                    "name":"it's a small world",
+                    "rideValue":7
+                  },
+                {
+                    "name":	"Na'vi River Journey",
+                    "rideValue":8
+                  },
+                {
+                    "name":"Astro Orbiter",
+                    "rideValue":9
+                  },
+                {
+                    "name":"Slinky Dog Dash",
+                    "rideValue":10
+                  }
+            ]
+
+        },
+        {
+            "id": 3,
+            "name":"Justin",
+            "height":"over48",
+            "favorites":[
+                {
+                    "name":"Kilimanjaro Safaris",
+                    "rideValue":1
+                  },
+                {
+                    "name":"Expedition Everest - Legend of the Forbidden Mountain®",
+                    "rideValue":2
+                  },
+                {
+                    "name":"The Twilight Zone Tower of Terror",
+                    "rideValue":3
+                  },
+                {
+                    "name":"Star Wars: Rise of the Resistance",
+                    "rideValue":4
+                  },
+                {
+                    "name":"Seven Dwarfs Mine Train ",
+                    "rideValue":5
+                  },
+                {
+                    "name":"Avatar Flight of Passage",
+                    "rideValue":6
+                  },
+                {
+                    "name":"Splash Mountain",
+                    "rideValue":7
+                  },
+                {
+                    "name":"Space Mountain",
+                    "rideValue":8
+                  },
+                {
+                    "name":"Rock 'n' Roller Coaster Starring Aerosmith",
+                    "rideValue":9
+                  },
+                {
+                    "name":"Slinky Dog Dash",
+                    "rideValue":10
+                  }
+            ]
+
+        }
+
+        
+    ],
+    "rideHeights":[
+        {"over48":
+            "Rock 'n' Roller Coaster Starring Aerosmith"
+        },
+        {"over44":[
+            "Avatar Flight of Passage",
+            "Expedition Everest - Legend of the Forbidden Mountain®",
+            "Space Mountain"
+        ]
+        },
+        {"over40":[
+            "DINOSAUR",
+            "Star Tours® - The Adventures Continue",
+            "Star Wars: Rise of the Resistance",
+            "The Twilight Zone Tower of Terror",
+            "Mission: SPACE",
+            "Soarin'",
+            "Test Track Presented by Chevrolet",
+            "Big Thunder Mountain Railroad",
+            "Splash Mountain"
+        ]
+        },
+        {"over38":[
+            "Seven Dwarfs Mine Train ",
+            "Millennium Falcon: Smugglers Run",
+            "Slinky Dog Dash",
+            "Kali River Rapids"
+        ]
+        },
+        {"over35":[
+            "The Barnstormer"
+        ]
+        },
+        {"over32":[
+            "Tomorrowland Speedway",
+            "Alien Swirling Saucers"
+        ]
+        }
+    ]
+   }
