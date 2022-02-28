@@ -7,6 +7,9 @@ header{
 }
 .header{
     text-align:center;
+    vertical-align:top;
+    margin-left: auto;
+    margin-right: auto;
 }
 .selectedButtons{
     border:1px solid;
