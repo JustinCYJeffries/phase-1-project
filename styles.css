@@ -5,6 +5,9 @@
 header{
     text-align:center;
 }
+.header{
+    text-align:center;
+}
 .selectedButtons{
     border:1px solid;
     text-align: center;
