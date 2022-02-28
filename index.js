@@ -54,16 +54,42 @@ function fetchEpcot(){
     .then(heightElement)
 }
 //event listeners
-allParks.addEventListener("click", fetchAnimalKingdom)
-allParks.addEventListener("click", fetchMagicKingdom)
-allParks.addEventListener("click", fetchHollywoodStudios)
-allParks.addEventListener("click", fetchEpcot)
-magicKingdom.addEventListener("click", fetchMagicKingdom)
-hollywoodStudios.addEventListener("click", fetchHollywoodStudios)
-epcot.addEventListener("click", fetchEpcot)
-animalKingdom.addEventListener("click", fetchAnimalKingdom)
+allParks.addEventListener("click", (e) =>{
+    resetFields(e)
+    fetchAnimalKingdom(e)
+    fetchMagicKingdom(e)
+    fetchHollywoodStudios(e)
+    fetchEpcot(e)
+}
+)
+
+magicKingdom.addEventListener("click",  (e) =>{
+    resetFields(e)
+    fetchMagicKingdom(e)
+}
+)
+hollywoodStudios.addEventListener("click",  (e) =>{
+    resetFields(e)
+    fetchHollywoodStudios(e)
+}
+)
+epcot.addEventListener("click", (e) =>{
+    resetFields(e) 
+    fetchEpcot(e)
+}
+)
+animalKingdom.addEventListener("click",  (e) =>{
+    resetFields(e) 
+    fetchAnimalKingdom(e)
+}
+)
 
 //functions
+function resetFields(){
+    openRideTable.innerHTML=" "
+    closedRideTable.innerHTML=" "
+}
+
 function displayFamily(members){
     members.forEach(members => renderFamily(members))
 }
@@ -79,6 +105,7 @@ function renderFamily(member){
 
 
 function cleanUpFetch(lands){
+    
     let landProp = lands.lands
       for(i=0; i<landProp.length; i++){
         landProp[i].rides.forEach(ride=>checkOpen(ride))
@@ -105,6 +132,7 @@ function heightElement(heightData){
     }
 
 function renderOpenRideTable(ride){
+    
     if (typeof ride != "undefined" && addOpenRides ){
         openRidetitle.textContent = "These Rides are Open"
         let row= document.createElement('tr')
