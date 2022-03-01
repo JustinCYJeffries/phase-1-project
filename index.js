@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () =>{
-//selectors and listeners
+
+
+
+
+    //selectors and listeners
 const peopleSelectors = document.querySelector('#populatePeople')
 const openRidetitle = document.querySelector('#openRideTitle')
 const closedRidetitle = document.querySelector('#closedRideTitle')
@@ -14,6 +18,7 @@ const epcot=document.querySelector('#epcot');
 const hollywoodStudios=document.querySelector('#hollywoodStudios');
 const animalKingdom=document.querySelector('#animalKingdom');
 const favoriteRideTitle=document.querySelector('#favoriteRideTitle');
+let rideArray = []
 //fetch
 //fetch family from db
 
@@ -40,7 +45,7 @@ function fetchMagicKingdom(){
 }
 
 function fetchHollywoodStudios(){
-    fetch("https://queue-times.com/en-US/parks/7/queue_times.json",)
+    fetch("https://queue-times.com/en-US/parks/7/queue_times.json")
     .then(r => r.json())
     .then(function (r){
         cleanUpFetch(r)
@@ -51,6 +56,7 @@ function fetchEpcot(){
     .then(r => r.json())
     .then(function (r){
         cleanUpFetch(r)
+        
         })
 }
  function fetchHeightInfo() {
@@ -103,12 +109,13 @@ function displayFamily(members){
 }
 function renderFamily(member){
     const memberButton = document.createElement('button')
-     memberButton.name = member.name
+    memberButton.name = member.name
     memberButton.classList = "button"
     memberButton.id = member.id
     memberButton.innerHTML = member.name
     memberButton.favorites = member.favorites
     peopleSelectors.appendChild(memberButton)
+    topTenCleanup(member)
     memberButton.addEventListener("click", (e)=>{
         resetFavoriteFields(e)
         const clickedUser = {
@@ -116,8 +123,9 @@ function renderFamily(member){
             name:e.target.name
         }
         if (clickedUser.id==memberButton.id){
-            topTenCleanup(member)
+           
             favoriteRideTitle.innerHTML=`${clickedUser.name}'s favorite rides!`
+           
         }
         
        
@@ -132,7 +140,10 @@ function renderFamily(member){
 function topTenCleanup(member){
     let favoriteList = member.favorites
     for(i=0; i<favoriteList.length; i++){
-        generateFavoriteList(favoriteList[i])
+        let key=member.name
+         favoriteList[i][key]=favoriteList[i].rideValue
+         rideCollection(favoriteList[i])
+
       }  
 
     }
@@ -140,9 +151,65 @@ function topTenCleanup(member){
 function cleanUpFetch(lands){
     let landProp = lands.lands
       for(i=0; i<landProp.length; i++){
-        landProp[i].rides.forEach(ride=>checkOpen(ride))
+        landProp[i].rides.forEach(ride=>{
+            ride.park="Magic Kingdom",
+            ride.height="under32"
+            over48.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over48inches"
+                    console.log(ride.name)
+                }
+            })
+            over44.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over44inches"
+                    console.log(ride)
+                }
+            })
+            over40.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over40inches"
+                    console.log(ride)
+                }
+            })
+            over38.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over38inches"
+                    console.log(ride)
+                }
+            })
+            over35.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over35inches"
+                    console.log(ride)
+                }
+            })
+            over32.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over32inches"
+                    console.log(ride)
+                }
+            })
+            rideCollection(ride)
+        })
       }  
 }
+async function rideCollection(ride){
+    rideArray.push(ride);
+    rideFilter(rideArray)
+ }
+async function rideFilter(arry){
+    await rideCollection();
+    console.log(arry)
+}
+ 
+ 
+    
+ 
+    
+
+
+
 function generateFavoriteList(favorite){
     console.log(favorite)
     let row= document.createElement('tr')
@@ -168,11 +235,11 @@ function checkOpen(ride){
 
 function heightElement(heightData){
     globalThis.over32=heightData[5].over32
-    globalThis.over35=heightData[4].over35.concat(over32)
-    globalThis.over38=heightData[3].over38.concat(over35)
-    globalThis.over40=heightData[2].over40.concat(over38)
-    globalThis.over44=heightData[1].over44.concat(over40)
-    globalThis.over48=heightData[0].over48.concat(over44)   
+    globalThis.over35=heightData[4].over35
+    globalThis.over38=heightData[3].over38
+    globalThis.over40=heightData[2].over40
+    globalThis.over44=heightData[1].over44
+    globalThis.over48=heightData[0].over48 
     }
 
 function renderOpenRideTable(ride){
@@ -195,6 +262,7 @@ function renderOpenRideTable(ride){
 
 }
 function renderOpenRides(ride){
+    
     let row= document.createElement('tr')
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
@@ -224,6 +292,7 @@ function renderClosedRideTable(ride){
     
 }
 function renderClosedRides(ride){
+    
     let row= document.createElement('tr')
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
@@ -234,11 +303,14 @@ function renderClosedRides(ride){
     closedRideTable.appendChild(row)
    
     }
+    fetchHeightInfo()    
+    fetchFamily()
+    fetchAnimalKingdom()
+    fetchMagicKingdom()
+    fetchHollywoodStudios()
+    fetchEpcot()
+
     
 
 
-
-
-fetchFamily()
-fetchHeightInfo()
 })
