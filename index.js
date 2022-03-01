@@ -113,9 +113,6 @@ function resetFavoriteFields(){
 }
 
 function displayFamily(members){
-    members.forEach(members => renderFamily(members))
-}
-function displayFamily(members){
     members.forEach(member => {
     const memberButton = document.createElement('button')
     memberButton.name = member.name
@@ -350,27 +347,8 @@ function cleanUpFetchEP(lands){
       rideCollection(rideArray) 
 }
 function rideCollection(array){
-    if(int=0){
-    arr1.push(array)
-    int++}
-    else if(int=1){
-        arr2.push(array)
-        int++}
-    else if(int=2){
-        arr3.push(array)
-       int++}
-    else if(int=3){
-        arr4.push(array)
-       int++}
-    else if(int=4){
-        arr5.push(array)
-       int++}
-    
-    console.log(arr1,'array1')
-    console.log(arr2,'array2')
-    console.log(arr3,'array3')
-    console.log(arr4,'array4')
-    console.log(arr5,'array5')
+    console.log(array)
+   
 }
 
 
