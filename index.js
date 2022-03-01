@@ -87,7 +87,7 @@ animalKingdom.addEventListener("click",  (e) =>{
     fetchAnimalKingdom(e)
 }
 )
-
+   
 //functions
 function resetFields(){
     openRideTable.innerHTML=" "
@@ -99,12 +99,28 @@ function displayFamily(members){
 }
 function renderFamily(member){
     const memberButton = document.createElement('button')
+     memberButton.name = member.name
     memberButton.classList = "button"
     memberButton.id = member.id
     memberButton.innerHTML = member.name
+    memberButton.favorites = member.favorites
     peopleSelectors.appendChild(memberButton)
-    topTenCleanup(member)
+    memberButton.addEventListener("click", (e)=>{
+        const clickedUser = {
+            id:e.target.id,
+            name:e.target.name
+        }
+       
+            console.log(clickedUser)
+       
+        }
+    
+    
+    )
+    
+    
 }
+
 function topTenCleanup(member){
     let favoriteList = member.favorites
     for(i=0; i<favoriteList.length; i++){
