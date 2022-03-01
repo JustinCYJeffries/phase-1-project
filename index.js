@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () =>{
 //selectors and listeners
-const peopleSelectors = document.querySelector('#peopleSelectors')
+const peopleSelectors = document.querySelector('#populatePeople')
 const openRidetitle = document.querySelector('#openRideTitle')
 const closedRidetitle = document.querySelector('#closedRideTitle')
+const favoriteRideTable = document.querySelector('#favoriteRides')
 let addOpenRides = true
 let addClosedRides = true
 const closedRideTable=document.querySelector('#closedRides');
@@ -14,16 +15,7 @@ const hollywoodStudios=document.querySelector('#hollywoodStudios');
 const animalKingdom=document.querySelector('#animalKingdom');
 //fetch
 //fetch family from db
-const buttonChange = document.querySelectorAll(".cellButtons")
-console.log(buttonChange)
-Array.from(buttonChange).forEach(el =>{
-    el.addEventListener('click', e =>{
-        
-        if (e.target.name == buttonChange){
-            document.getElementById(e.target.id).classList.add('selectedButtons')
-        }else el.classList.remove('selectedButtons')
-    })
-})
+
 
 
 function fetchFamily(){
@@ -111,18 +103,34 @@ function renderFamily(member){
     memberButton.id = member.id
     memberButton.innerHTML = member.name
     peopleSelectors.appendChild(memberButton)
-    
+    topTenCleanup(member)
 }
+function topTenCleanup(member){
+    let favoriteList = member.favorites
+    for(i=0; i<favoriteList.length; i++){
+        generateFavoriteList(favoriteList[i])
+      }  
 
-
+    }
 
 function cleanUpFetch(lands){
-    
     let landProp = lands.lands
       for(i=0; i<landProp.length; i++){
         landProp[i].rides.forEach(ride=>checkOpen(ride))
       }  
 }
+function generateFavoriteList(favorite){
+    console.log(favorite)
+    let row= document.createElement('tr')
+    let cell1= document.createElement('td')
+    cell1.innerHTML= `${favorite.rideValue}`
+    let cell2= document.createElement('td')
+    cell2.innerHTML= `${favorite.name}`
+    row.appendChild(cell1)
+    row.appendChild(cell2)
+    favoriteRideTable.appendChild(row)
+}
+
 
 function checkOpen(ride){
     //confirmed this works, keep here
