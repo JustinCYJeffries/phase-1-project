@@ -24,9 +24,28 @@ header{
     max-width: calc(100vw - 2rem);
   }
 
+#parkSelectors {
+    
+    margin: 1rem auto 0 500px;
+    max-width: calc(100vw - 2rem);
+  } 
 .boxButton{
     border:1px solid;
     padding: 4px;
     display:inline-block;
     margin:auto ;
+}
+.button {
+    transition-duration: 0.4s;
+    border-radius:10px;
+    min-height:30px; 
+    min-width: 120px;
+  }
+  
+  .button:hover {
+    background-color: #4586db; 
+    color: white;
+  }
+  .button:active {
+    background-color: #0a1347;
 }

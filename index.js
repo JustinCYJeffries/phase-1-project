@@ -14,6 +14,18 @@ const hollywoodStudios=document.querySelector('#hollywoodStudios');
 const animalKingdom=document.querySelector('#animalKingdom');
 //fetch
 //fetch family from db
+const buttonChange = document.querySelectorAll(".cellButtons")
+console.log(buttonChange)
+Array.from(buttonChange).forEach(el =>{
+    el.addEventListener('click', e =>{
+        
+        if (e.target.name == buttonChange){
+            document.getElementById(e.target.id).classList.add('selectedButtons')
+        }else el.classList.remove('selectedButtons')
+    })
+})
+
+
 function fetchFamily(){
     fetch("http://localhost:3000/jeffriesFamily")
     .then(r => r.json())
@@ -114,7 +126,7 @@ function cleanUpFetch(lands){
 
 function checkOpen(ride){
     //confirmed this works, keep here
-    console.log(ride.is_open)
+    //console.log(ride.is_open)
     if(ride.is_open === true){
        renderOpenRideTable(ride)
     }
