@@ -19,6 +19,14 @@ const hollywoodStudios=document.querySelector('#hollywoodStudios');
 const animalKingdom=document.querySelector('#animalKingdom');
 const favoriteRideTitle=document.querySelector('#favoriteRideTitle');
 let rideArray = []
+let favoriteArray = []
+let totalRides = []
+let arr1 = []
+let arr2 = []
+let arr3 = []
+let arr4 = []
+let arr5 = []
+let int =0
 //fetch
 //fetch family from db
 
@@ -33,14 +41,14 @@ function fetchAnimalKingdom(){
     fetch("https://queue-times.com/en-US/parks/8/queue_times.json",)
     .then(r => r.json())
     .then(function (r){
-        cleanUpFetch(r)
+        cleanUpFetchAK(r)
         })
 }
 function fetchMagicKingdom(){
     fetch("https://queue-times.com/en-US/parks/6/queue_times.json",)
     .then(r => r.json())
     .then(function (r){
-        cleanUpFetch(r)
+        cleanUpFetchMK(r)
         })
 }
 
@@ -48,14 +56,14 @@ function fetchHollywoodStudios(){
     fetch("https://queue-times.com/en-US/parks/7/queue_times.json")
     .then(r => r.json())
     .then(function (r){
-        cleanUpFetch(r)
+        cleanUpFetchHS(r)
         })
 }
 function fetchEpcot(){
     fetch("https://queue-times.com/en-US/parks/5/queue_times.json",)
     .then(r => r.json())
     .then(function (r){
-        cleanUpFetch(r)
+        cleanUpFetchEP(r)
         
         })
 }
@@ -107,7 +115,8 @@ function resetFavoriteFields(){
 function displayFamily(members){
     members.forEach(members => renderFamily(members))
 }
-function renderFamily(member){
+function displayFamily(members){
+    members.forEach(member => {
     const memberButton = document.createElement('button')
     memberButton.name = member.name
     memberButton.classList = "button"
@@ -115,7 +124,13 @@ function renderFamily(member){
     memberButton.innerHTML = member.name
     memberButton.favorites = member.favorites
     peopleSelectors.appendChild(memberButton)
-    topTenCleanup(member)
+    let favoriteList = member.favorites
+    for(i=0; i<favoriteList.length; i++){
+        let key=member.name
+         favoriteList[i][key]=favoriteList[i].rideValue
+         favoriteArray.push(favoriteList[i])
+         
+      }  
     memberButton.addEventListener("click", (e)=>{
         resetFavoriteFields(e)
         const clickedUser = {
@@ -133,22 +148,12 @@ function renderFamily(member){
     
     
     )
-    
-    
+    })    
+    rideCollection(favoriteArray)
 }
 
-function topTenCleanup(member){
-    let favoriteList = member.favorites
-    for(i=0; i<favoriteList.length; i++){
-        let key=member.name
-         favoriteList[i][key]=favoriteList[i].rideValue
-         rideCollection(favoriteList[i])
 
-      }  
-
-    }
-
-function cleanUpFetch(lands){
+function cleanUpFetchMK(lands){
     let landProp = lands.lands
       for(i=0; i<landProp.length; i++){
         landProp[i].rides.forEach(ride=>{
@@ -157,51 +162,218 @@ function cleanUpFetch(lands){
             over48.forEach(bigride =>{
                 if(bigride==ride.name){
                     ride.height="over48inches"
-                    console.log(ride.name)
+                    
                 }
             })
             over44.forEach(bigride =>{
                 if(bigride==ride.name){
                     ride.height="over44inches"
-                    console.log(ride)
+                    
                 }
             })
             over40.forEach(bigride =>{
                 if(bigride==ride.name){
                     ride.height="over40inches"
-                    console.log(ride)
+                   
                 }
             })
             over38.forEach(bigride =>{
                 if(bigride==ride.name){
                     ride.height="over38inches"
-                    console.log(ride)
+                   
                 }
             })
             over35.forEach(bigride =>{
                 if(bigride==ride.name){
                     ride.height="over35inches"
-                    console.log(ride)
+                  
                 }
             })
             over32.forEach(bigride =>{
                 if(bigride==ride.name){
                     ride.height="over32inches"
-                    console.log(ride)
+                   
                 }
             })
-            rideCollection(ride)
+           rideArray.push(ride)
+           
         })
-      }  
+
+      } 
+      rideCollection(rideArray) 
 }
-async function rideCollection(ride){
-    rideArray.push(ride);
-    rideFilter(rideArray)
- }
-async function rideFilter(arry){
-    await rideCollection();
-    console.log(arry)
+function cleanUpFetchAK(lands){
+    let landProp = lands.lands
+      for(i=0; i<landProp.length; i++){
+        landProp[i].rides.forEach(ride=>{
+            ride.park="Animal Kingdom",
+            ride.height="under32"
+            over48.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over48inches"
+                    
+                }
+            })
+            over44.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over44inches"
+                    
+                }
+            })
+            over40.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over40inches"
+                   
+                }
+            })
+            over38.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over38inches"
+                   
+                }
+            })
+            over35.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over35inches"
+                  
+                }
+            })
+            over32.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over32inches"
+                   
+                }
+            })
+           rideArray.push(ride)
+           
+        })
+
+      } 
+      rideCollection(rideArray) 
 }
+function cleanUpFetchHS(lands){
+    let landProp = lands.lands
+      for(i=0; i<landProp.length; i++){
+        landProp[i].rides.forEach(ride=>{
+            ride.park="Hollywood Studios",
+            ride.height="under32"
+            over48.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over48inches"
+                    
+                }
+            })
+            over44.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over44inches"
+                    
+                }
+            })
+            over40.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over40inches"
+                   
+                }
+            })
+            over38.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over38inches"
+                   
+                }
+            })
+            over35.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over35inches"
+                  
+                }
+            })
+            over32.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over32inches"
+                   
+                }
+            })
+           rideArray.push(ride)
+           
+        })
+
+      } 
+      rideCollection(rideArray) 
+}
+function cleanUpFetchEP(lands){
+    let landProp = lands.lands
+      for(i=0; i<landProp.length; i++){
+        landProp[i].rides.forEach(ride=>{
+            ride.park="Hollywood Studios",
+            ride.height="under32"
+            over48.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over48inches"
+                    
+                }
+            })
+            over44.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over44inches"
+                    
+                }
+            })
+            over40.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over40inches"
+                   
+                }
+            })
+            over38.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over38inches"
+                   
+                }
+            })
+            over35.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over35inches"
+                  
+                }
+            })
+            over32.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over32inches"
+                   
+                }
+            })
+           rideArray.push(ride)
+           
+        })
+
+      } 
+      rideCollection(rideArray) 
+}
+function rideCollection(array){
+    if(int=0){
+    arr1.push(array)
+    int++}
+    else if(int=1){
+        arr2.push(array)
+        int++}
+    else if(int=2){
+        arr3.push(array)
+       int++}
+    else if(int=3){
+        arr4.push(array)
+       int++}
+    else if(int=4){
+        arr5.push(array)
+       int++}
+    
+    console.log(arr1,'array1')
+    console.log(arr2,'array2')
+    console.log(arr3,'array3')
+    console.log(arr4,'array4')
+    console.log(arr5,'array5')
+}
+
+
  
  
     
