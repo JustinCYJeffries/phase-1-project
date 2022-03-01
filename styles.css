@@ -20,7 +20,7 @@ header{
 #peopleSelectors {
     display: flex;
     overflow-x: auto;
-    margin: 1rem 200px 0 200px;
+    margin: 1rem auto 0 550px;
     max-width: calc(100vw - 2rem);
   }
 

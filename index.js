@@ -106,8 +106,8 @@ function displayFamily(members){
     members.forEach(members => renderFamily(members))
 }
 function renderFamily(member){
-    const memberButton = document.createElement('span')
-    memberButton.classList = "boxButton"
+    const memberButton = document.createElement('button')
+    memberButton.classList = "button"
     memberButton.id = member.id
     memberButton.innerHTML = member.name
     peopleSelectors.appendChild(memberButton)
