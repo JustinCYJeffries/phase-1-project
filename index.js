@@ -13,6 +13,7 @@ const magicKingdom=document.querySelector('#magicKingdom');
 const epcot=document.querySelector('#epcot');
 const hollywoodStudios=document.querySelector('#hollywoodStudios');
 const animalKingdom=document.querySelector('#animalKingdom');
+const favoriteRideTitle=document.querySelector('#favoriteRideTitle');
 //fetch
 //fetch family from db
 
@@ -93,6 +94,9 @@ function resetFields(){
     openRideTable.innerHTML=" "
     closedRideTable.innerHTML=" "
 }
+function resetFavoriteFields(){
+    favoriteRideTable.innerHTML=" "
+}
 
 function displayFamily(members){
     members.forEach(members => renderFamily(members))
@@ -106,12 +110,16 @@ function renderFamily(member){
     memberButton.favorites = member.favorites
     peopleSelectors.appendChild(memberButton)
     memberButton.addEventListener("click", (e)=>{
+        resetFavoriteFields(e)
         const clickedUser = {
             id:e.target.id,
             name:e.target.name
         }
-       
-            console.log(clickedUser)
+        if (clickedUser.id==memberButton.id){
+            topTenCleanup(member)
+            favoriteRideTitle.innerHTML=`${clickedUser.name}'s favorite rides!`
+        }
+        
        
         }
     
