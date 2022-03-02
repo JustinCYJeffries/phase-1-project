@@ -18,6 +18,7 @@ const epcot=document.querySelector('#epcot');
 const hollywoodStudios=document.querySelector('#hollywoodStudios');
 const animalKingdom=document.querySelector('#animalKingdom');
 const favoriteRideTitle=document.querySelector('#favoriteRideTitle');
+const notTallTable=document.querySelector('#notTallEnough');
 let rideArray = []
 let favoriteArray = []
 let totalRides = []
@@ -179,6 +180,13 @@ function displayFamily(members){
       }  
     memberButton.addEventListener("click", (e)=>{
         let favTable=document.getElementById("favoriteRides")
+        let notTallTitle=document.querySelector("#notTallEnoughTitle")
+        notTallTitle.textContent = ""
+        let tempNoTable =[]
+        tempNoTable=Array.prototype.slice.call(notTallTable.children)
+        tempNoTable.forEach(row=>{
+            row.style.display="none"
+        })
         favTable=Array.prototype.slice.call(favTable.children)
         favTable.forEach(row=>{
             row.style.display="none"
@@ -198,9 +206,114 @@ function displayFamily(members){
         
             
         }
-        
-       
+        if(e.target.height != "over48"){
+            
+            notTallTitle.textContent = "Not Tall Enough"
         }
+        let heightOver48=notTallTable.getElementsByClassName("over48inches")       
+        let heightOver44=notTallTable.getElementsByClassName("over44inches") 
+        let heightOver40=notTallTable.getElementsByClassName("over40inches")
+        let heightOver38=notTallTable.getElementsByClassName("over38inches")
+        let heightOver35=notTallTable.getElementsByClassName("over35inches")
+        let heightOver32=notTallTable.getElementsByClassName("over32inches")
+        if(e.target.height == "over44"){
+            heightOver48=Array.prototype.slice.call(heightOver48)
+            heightOver48.forEach(row=>{
+                row.style.display="block"
+            })
+        }
+        if(e.target.height === "over40"){
+            heightOver48=Array.prototype.slice.call(heightOver48)
+            heightOver48.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver44=Array.prototype.slice.call(heightOver44)
+            heightOver44.forEach(row=>{
+                row.style.display="block"
+            })
+        }
+        if(e.target.height === "over38"){
+            heightOver48=Array.prototype.slice.call(heightOver48)
+            heightOver48.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver44=Array.prototype.slice.call(heightOver44)
+            heightOver44.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver40=Array.prototype.slice.call(heightOver40)
+            heightOver40.forEach(row=>{
+                row.style.display="block"
+            })
+        }
+        if(e.target.height == "over35"){
+            heightOver48=Array.prototype.slice.call(heightOver48)
+            heightOver48.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver44=Array.prototype.slice.call(heightOver44)
+            heightOver44.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver40=Array.prototype.slice.call(heightOver40)
+            heightOver40.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver38=Array.prototype.slice.call(heightOver38)
+            heightOver38.forEach(row=>{
+                row.style.display="block"
+            })
+        }
+        if(e.target.height == "over32"){
+            heightOver48=Array.prototype.slice.call(heightOver48)
+            heightOver48.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver44=Array.prototype.slice.call(heightOver44)
+            heightOver44.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver40=Array.prototype.slice.call(heightOver40)
+            heightOver40.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver38=Array.prototype.slice.call(heightOver38)
+            heightOver38.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver35=Array.prototype.slice.call(heightOver35)
+            heightOver35.forEach(row=>{
+                row.style.display="block"
+            })
+        }
+        if(e.target.height == "under32"){
+            heightOver48=Array.prototype.slice.call(heightOver48)
+            heightOver48.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver44=Array.prototype.slice.call(heightOver44)
+            heightOver44.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver40=Array.prototype.slice.call(heightOver40)
+            heightOver40.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver38=Array.prototype.slice.call(heightOver38)
+            heightOver38.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver35=Array.prototype.slice.call(heightOver35)
+            heightOver35.forEach(row=>{
+                row.style.display="block"
+            })
+            heightOver32=Array.prototype.slice.call(heightOver32)
+            heightOver32.forEach(row=>{
+                row.style.display="block"
+            })
+        }
+    }
+        
     
     
     )
@@ -374,7 +487,7 @@ function collectionlogger(arr){
              for(let i=0; i<arr[1].length;i++){
                  if(name.name === arr[1][i].name){ 
                     Object.assign(name, arr[1][i])
-                     //Object.assign(arr[1][i], name)
+                     
                      
                      
                  }
@@ -390,24 +503,20 @@ function collectionlogger(arr){
 }
  function forEachFavorite(array){
      array.forEach(ride=>generateFavoriteList(ride))
- }
+     }
  function forEachRide(array){
-    array.forEach(ride=>checkOpen(ride))
+    array.forEach(function(ride){
+        checkOpen(ride)
+        renderNotTallRides(ride)
+    })
+   
 }
- function filterFavoriteList(ride){
-     if(memberButton.event = undefined){
-         return
-     }
-     else if(memberButton.event == ride.name){
-        
-     }
- }
-    
+  
 
 
 
 function generateFavoriteList(favorite){
-    console.log(favorite)
+    
     let row= document.createElement('tr')
     row.classList.add(favorite.memberName)
     row.style.display="none"
@@ -474,6 +583,18 @@ function renderOpenRides(ride){
     openRideTable.appendChild(row)
 
 }
+function renderNotTallRides(ride){
+    let row= document.createElement('tr')
+    row.classList.add(ride.height)
+    row.style.display="none"
+    let cell1= document.createElement('td')
+    cell1.innerHTML= `${ride.name}`
+    row.appendChild(cell1)
+    notTallTable.appendChild(row)
+}
+
+
+
 function renderClosedRideTable(ride){
     if (typeof ride != "undefined" && addClosedRides ){
     closedRidetitle.textContent = "These Rides are Closed"
@@ -486,7 +607,7 @@ function renderClosedRideTable(ride){
     row.appendChild(heading2)
     closedRideTable.appendChild(row)
     addClosedRides=false;
-   console.log()
+   
     renderClosedRides(ride)
    }
    else renderClosedRides(ride)
