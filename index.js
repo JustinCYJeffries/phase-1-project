@@ -26,7 +26,7 @@ let arr2 = []
 let arr3 = []
 let arr4 = []
 let arr5 = []
-let int =0
+let int ={increment:0}
 //fetch
 //fetch family from db
 
@@ -63,7 +63,53 @@ function fetchEpcot(){
     fetch("https://queue-times.com/en-US/parks/5/queue_times.json",)
     .then(r => r.json())
     .then(function (r){
-        cleanUpFetchEP(r)
+        let landProp = r.lands
+      for(i=0; i<landProp.length; i++){
+        landProp[i].rides.forEach(ride=>{
+            ride.park="Hollywood Studios",
+            ride.height="under32"
+            over48.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over48inches"
+                    
+                }
+            })
+            over44.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over44inches"
+                    
+                }
+            })
+            over40.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over40inches"
+                   
+                }
+            })
+            over38.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over38inches"
+                   
+                }
+            })
+            over35.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over35inches"
+                  
+                }
+            })
+            over32.forEach(bigride =>{
+                if(bigride==ride.name){
+                    ride.height="over32inches"
+                   
+                }
+            })
+           rideArray.push(ride)
+           
+        })
+
+      } 
+      rideCollection(rideArray)
         
         })
 }
@@ -298,60 +344,26 @@ function cleanUpFetchHS(lands){
       rideCollection(rideArray) 
 }
 function cleanUpFetchEP(lands){
-    let landProp = lands.lands
-      for(i=0; i<landProp.length; i++){
-        landProp[i].rides.forEach(ride=>{
-            ride.park="Hollywood Studios",
-            ride.height="under32"
-            over48.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over48inches"
-                    
-                }
-            })
-            over44.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over44inches"
-                    
-                }
-            })
-            over40.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over40inches"
-                   
-                }
-            })
-            over38.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over38inches"
-                   
-                }
-            })
-            over35.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over35inches"
-                  
-                }
-            })
-            over32.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over32inches"
-                   
-                }
-            })
-           rideArray.push(ride)
-           
-        })
-
-      } 
-      rideCollection(rideArray) 
+     
 }
+
+
+
 function rideCollection(array){
-    console.log(array)
-   
+    totalRides.push(array)
+   collectionlogger(totalRides)
 }
-
-
+function collectionlogger(arr){
+   int.increment = int.increment || 0
+  
+       if(int.increment == 4){
+           console.log(arr[1])
+            console.log(arr[0])
+           
+       }
+   return ++int.increment
+    
+}
  
  
     
