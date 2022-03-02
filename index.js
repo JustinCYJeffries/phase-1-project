@@ -27,6 +27,8 @@ let arr3 = []
 let arr4 = []
 let arr5 = []
 let int ={increment:0}
+let clickedUser = []
+const memberButton ={}
 //fetch
 //fetch family from db
 
@@ -160,30 +162,41 @@ function resetFavoriteFields(){
 
 function displayFamily(members){
     members.forEach(member => {
-    const memberButton = document.createElement('button')
+    let memberButton = document.createElement('button')
     memberButton.name = member.name
     memberButton.classList = "button"
     memberButton.id = member.id
     memberButton.innerHTML = member.name
     memberButton.favorites = member.favorites
+    memberButton.height=member.height
     peopleSelectors.appendChild(memberButton)
     let favoriteList = member.favorites
     for(i=0; i<favoriteList.length; i++){
-        let key=member.name
-         favoriteList[i][key]=favoriteList[i].rideValue
+        let key="memberName"
+         favoriteList[i][key]=member.name
          favoriteArray.push(favoriteList[i])
          
       }  
     memberButton.addEventListener("click", (e)=>{
-        resetFavoriteFields(e)
-        const clickedUser = {
+        let favTable=document.getElementById("favoriteRides")
+        favTable=Array.prototype.slice.call(favTable.children)
+        favTable.forEach(row=>{
+            row.style.display="none"
+        })
+        clickedUser = {
             id:e.target.id,
             name:e.target.name
         }
         if (clickedUser.id==memberButton.id){
-           
+           let memberButton={event:e.target.name}
             favoriteRideTitle.innerHTML=`${clickedUser.name}'s favorite rides!`
-           
+          let clicked = document.getElementsByClassName(clickedUser.name)
+          clicked=Array.prototype.slice.call(clicked)  
+          clicked.forEach(row=>{
+                row.style.display="block"
+            })
+        
+            
         }
         
        
@@ -357,17 +370,38 @@ function collectionlogger(arr){
    int.increment = int.increment || 0
   
        if(int.increment == 4){
-           console.log(arr[1])
-            console.log(arr[0])
-           
-       }
+         arr[0].forEach(name=>{
+             for(let i=0; i<arr[1].length;i++){
+                 if(name.name === arr[1][i].name){ 
+                    Object.assign(name, arr[1][i])
+                     //Object.assign(arr[1][i], name)
+                     
+                     
+                 }
+
+             }
+
+         })  
+         forEachRide(arr[1])
+         forEachFavorite(arr[0])
+        }
    return ++int.increment
     
 }
- 
- 
-    
- 
+ function forEachFavorite(array){
+     array.forEach(ride=>generateFavoriteList(ride))
+ }
+ function forEachRide(array){
+    array.forEach(ride=>checkOpen(ride))
+}
+ function filterFavoriteList(ride){
+     if(memberButton.event = undefined){
+         return
+     }
+     else if(memberButton.event == ride.name){
+        
+     }
+ }
     
 
 
@@ -375,12 +409,17 @@ function collectionlogger(arr){
 function generateFavoriteList(favorite){
     console.log(favorite)
     let row= document.createElement('tr')
+    row.classList.add(favorite.memberName)
+    row.style.display="none"
     let cell1= document.createElement('td')
     cell1.innerHTML= `${favorite.rideValue}`
     let cell2= document.createElement('td')
     cell2.innerHTML= `${favorite.name}`
+    let cell3= document.createElement('td')
+    cell3.innerHTML= `${favorite.wait_time}`
     row.appendChild(cell1)
     row.appendChild(cell2)
+    row.appendChild(cell3)
     favoriteRideTable.appendChild(row)
 }
 
@@ -447,7 +486,7 @@ function renderClosedRideTable(ride){
     row.appendChild(heading2)
     closedRideTable.appendChild(row)
     addClosedRides=false;
-   
+   console.log()
     renderClosedRides(ride)
    }
    else renderClosedRides(ride)
