@@ -12,11 +12,7 @@ let addOpenRides = true
 let addClosedRides = true
 const closedRideTable=document.querySelector('#closedRides');
 const openRideTable=document.querySelector('#openRides');
-const allParks=document.querySelector('#allParks');
-const magicKingdom=document.querySelector('#magicKingdom');
-const epcot=document.querySelector('#epcot');
-const hollywoodStudios=document.querySelector('#hollywoodStudios');
-const animalKingdom=document.querySelector('#animalKingdom');
+const parkSelectors = document.querySelector('#parkSelectors')
 const favoriteRideTitle=document.querySelector('#favoriteRideTitle');
 const notTallTable=document.querySelector('#notTallEnough');
 let rideArray = []
@@ -69,7 +65,7 @@ function fetchEpcot(){
         let landProp = r.lands
       for(i=0; i<landProp.length; i++){
         landProp[i].rides.forEach(ride=>{
-            ride.park="Hollywood Studios",
+            ride.park="Epcot",
             ride.height="under32"
             over48.forEach(bigride =>{
                 if(bigride==ride.name){
@@ -122,35 +118,7 @@ function fetchEpcot(){
     .then(heightElement)
 }
 //event listeners
-allParks.addEventListener("click", (e) =>{
-    resetFields(e)
-    fetchAnimalKingdom(e)
-    fetchMagicKingdom(e)
-    fetchHollywoodStudios(e)
-    fetchEpcot(e)
-}
-)
 
-magicKingdom.addEventListener("click",  (e) =>{
-    resetFields(e)
-    fetchMagicKingdom(e)
-}
-)
-hollywoodStudios.addEventListener("click",  (e) =>{
-    resetFields(e)
-    fetchHollywoodStudios(e)
-}
-)
-epcot.addEventListener("click", (e) =>{
-    resetFields(e) 
-    fetchEpcot(e)
-}
-)
-animalKingdom.addEventListener("click",  (e) =>{
-    resetFields(e) 
-    fetchAnimalKingdom(e)
-}
-)
    
 //functions
 function resetFields(){
@@ -511,7 +479,9 @@ function collectionlogger(arr){
     })
    
 }
-  
+  function checkButton(ride){
+
+  }
 
 
 
@@ -532,8 +502,25 @@ function generateFavoriteList(favorite){
     favoriteRideTable.appendChild(row)
 }
 
-
+parkSelectors.addEventListener("click",(e)=> {
+    let ridePark=document.querySelectorAll("[title]")    
+    ridePark==Array.prototype.slice.call(ridePark)
+    
+    ridePark.forEach(row =>{
+        row.style.display="none"
+        if(e.target.id=="all Parks"){
+        row.style.display="block" }
+        else if (e.target.id==row.title){
+            row.style.display="block" 
+        }
+    })
+   
+    
+    })
 function checkOpen(ride){
+ 
+   
+   
     //confirmed this works, keep here
     //console.log(ride.is_open)
     if(ride.is_open === true){
@@ -574,6 +561,7 @@ function renderOpenRideTable(ride){
 function renderOpenRides(ride){
     
     let row= document.createElement('tr')
+    row.classList.add(ride.park)
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
     let cell2= document.createElement('td')
@@ -616,6 +604,7 @@ function renderClosedRideTable(ride){
 function renderClosedRides(ride){
     
     let row= document.createElement('tr')
+    row.title =ride.park
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
     let cell2= document.createElement('td')
