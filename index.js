@@ -503,15 +503,20 @@ function generateFavoriteList(favorite){
 }
 
 parkSelectors.addEventListener("click",(e)=> {
+    let parkTitle= document.getElementById('parkName')
     let ridePark=document.querySelectorAll("[title]")    
     ridePark==Array.prototype.slice.call(ridePark)
-    
+    parkTitle.textContent=""
     ridePark.forEach(row =>{
         row.style.display="none"
+        
         if(e.target.id=="all Parks"){
+            parkTitle.textContent="All Parks"
         row.style.display="block" }
         else if (e.target.id==row.title){
             row.style.display="block" 
+            parkTitle.textContent=row.title
+            console.log(row.title)
         }
     })
    
@@ -561,7 +566,8 @@ function renderOpenRideTable(ride){
 function renderOpenRides(ride){
     
     let row= document.createElement('tr')
-    row.classList.add(ride.park)
+    row.title=ride.park
+    row.style.display="none"
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
     let cell2= document.createElement('td')
@@ -605,6 +611,7 @@ function renderClosedRides(ride){
     
     let row= document.createElement('tr')
     row.title =ride.park
+    row.style.display="none"
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
     let cell2= document.createElement('td')
