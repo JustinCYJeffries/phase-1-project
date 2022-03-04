@@ -26,7 +26,7 @@ let arr5 = []
 let int ={increment:0}
 let clickedUser = []
 const memberButton ={}
-const dropdown = document.getElementById('dropdown')
+
 //fetch
 //fetch family from db
 
@@ -466,6 +466,7 @@ function collectionlogger(arr){
          })  
          forEachRide(arr[1])
          forEachFavorite(arr[0])
+         generateDropdown(arr[1])
         }
    return ++int.increment
     
@@ -480,27 +481,268 @@ function collectionlogger(arr){
     array.forEach(function(ride){
         checkOpen(ride);
         renderNotTallRides(ride);
-        generateDropdown(ride);
+       
         
     })
    
 }
-  function generateDropdown(ride){
-      let option = document.createElement('option')
+  
+
+function generateDropdown(array){
+     let div = document.getElementById('dropdown') 
+     let indexZero=document.createElement('option')
+     indexZero.text="Choose Favorite Ride" 
+     let dropdown = document.createElement('select')
+     dropdown.appendChild(indexZero)
+        div.appendChild(dropdown) 
+    array.forEach(ride=>{
+    
+    let option = document.createElement('option')
         option.text=ride.name
         option.value=ride.name
         dropdown.appendChild(option)
-        dropdown.onchange=(choice)=>{
-            console.log(dropdown.value)
-        }
-      
-      
-
-
-  }
-
-
-
+        div.appendChild(dropdown) 
+    })
+    let newRides = []
+    dropdown.onchange=(c)=>{
+        array.forEach(ride=>{ 
+        if(c.target.value !=ride.name){
+         newRides.push(ride)
+        }})
+        
+        generateNextDropdown(newRides)
+        dropdown.disabled=true
+    }
+    
+    }
+  
+  function generateNextDropdown(array){
+    let div = document.getElementById('dropdown') 
+     let indexZero=document.createElement('option')
+     indexZero.text="Choose 2nd Favorite Ride" 
+     let dropdown = document.createElement('select')
+     dropdown.appendChild(indexZero)
+        div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       generateThirdDropdown(newRides)
+       dropdown.disabled=true
+    }
+   
+   }
+   function generateThirdDropdown(array){
+    let div = document.getElementById('dropdown') 
+    let indexZero=document.createElement('option')
+    indexZero.text="Choose 3rd Favorite Ride" 
+    let dropdown = document.createElement('select')
+    dropdown.appendChild(indexZero)
+       div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       generateFourthDropdown(newRides)
+       dropdown.disabled=true
+    }
+  
+   }
+   function generateFourthDropdown(array){
+    let div = document.getElementById('dropdown') 
+    let indexZero=document.createElement('option')
+    indexZero.text="Choose 4th Favorite Ride" 
+    let dropdown = document.createElement('select')
+    dropdown.appendChild(indexZero)
+       div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       generateFifthDropdown(newRides)
+       dropdown.disabled=true
+    }
+ 
+   }
+   function generateFifthDropdown(array){
+    let div = document.getElementById('dropdown') 
+    let indexZero=document.createElement('option')
+    indexZero.text="Choose 5th Favorite Ride" 
+    let dropdown = document.createElement('select')
+    dropdown.appendChild(indexZero)
+       div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       generateSixthDropdown(newRides)
+       dropdown.disabled=true
+    }
+  
+   }
+   function generateSixthDropdown(array){
+    let div = document.getElementById('dropdown') 
+    let indexZero=document.createElement('option')
+    indexZero.text="Choose 6th Favorite Ride" 
+    let dropdown = document.createElement('select')
+    dropdown.appendChild(indexZero)
+       div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       generateSeventhDropdown(newRides)
+       dropdown.disabled=true
+    }
+  
+   }
+   function generateSeventhDropdown(array){
+    let div = document.getElementById('dropdown') 
+     let indexZero=document.createElement('option')
+     indexZero.text="Choose 7th Favorite Ride" 
+     let dropdown = document.createElement('select')
+     dropdown.appendChild(indexZero)
+        div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       generateEighthDropdown(newRides)
+       dropdown.disabled=true
+    }
+  
+   }
+   function generateEighthDropdown(array){
+    let div = document.getElementById('dropdown') 
+     let indexZero=document.createElement('option')
+     indexZero.text="Choose 8th Favorite Ride" 
+     let dropdown = document.createElement('select')
+     dropdown.appendChild(indexZero)
+        div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       generateNinthDropdown(newRides) 
+       dropdown.disabled=true
+    }
+  
+   }
+   function generateNinthDropdown(array){
+    let div = document.getElementById('dropdown') 
+    let indexZero=document.createElement('option')
+    indexZero.text="Choose 9th Favorite Ride" 
+    let dropdown = document.createElement('select')
+    dropdown.appendChild(indexZero)
+       div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   let newRides = []
+   dropdown.onchange=(c)=>{
+       array.forEach(ride=>{ 
+       if(c.target.value !=ride.name){
+        newRides.push(ride)
+       }})
+       
+       generateTenthDropdown(newRides)
+       dropdown.disabled=true
+    }
+  
+   }
+   function generateTenthDropdown(array){
+    let div = document.getElementById('dropdown') 
+     let indexZero=document.createElement('option')
+     indexZero.text="Choose 10th Favorite Ride" 
+     let dropdown = document.createElement('select')
+     dropdown.appendChild(indexZero)
+        div.appendChild(dropdown) 
+   array.forEach(ride=>{
+   
+   let option = document.createElement('option')
+       option.text=ride.name
+       option.value=ride.name
+       dropdown.appendChild(option)
+       div.appendChild(dropdown) 
+   })
+   
+   }
+  
 function generateFavoriteList(favorite){
     
     let row= document.createElement('tr')
