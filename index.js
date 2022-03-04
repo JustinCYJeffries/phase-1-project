@@ -26,6 +26,7 @@ let arr5 = []
 let int ={increment:0}
 let clickedUser = []
 const memberButton ={}
+const dropdown = document.getElementById('dropdown')
 //fetch
 //fetch family from db
 
@@ -470,16 +471,31 @@ function collectionlogger(arr){
     
 }
  function forEachFavorite(array){
-     array.forEach(ride=>generateFavoriteList(ride))
+     array.forEach(ride=>{
+         generateFavoriteList(ride)
+        }
+         )
      }
  function forEachRide(array){
     array.forEach(function(ride){
-        checkOpen(ride)
-        renderNotTallRides(ride)
+        checkOpen(ride);
+        renderNotTallRides(ride);
+        generateDropdown(ride);
+        
     })
    
 }
-  function checkButton(ride){
+  function generateDropdown(ride){
+      let option = document.createElement('option')
+        option.text=ride.name
+        option.value=ride.name
+        dropdown.appendChild(option)
+        dropdown.onchange=(choice)=>{
+            console.log(dropdown.value)
+        }
+      
+      
+
 
   }
 
