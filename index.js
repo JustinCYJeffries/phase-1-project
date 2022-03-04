@@ -18,15 +18,10 @@ const notTallTable=document.querySelector('#notTallEnough');
 let rideArray = []
 let favoriteArray = []
 let totalRides = []
-let arr1 = []
-let arr2 = []
-let arr3 = []
-let arr4 = []
-let arr5 = []
 let int ={increment:0}
 let clickedUser = []
-const memberButton ={}
-
+const resetButton = document.querySelector("#reset")
+const div = document.getElementById('dropdown')
 //fetch
 //fetch family from db
 
@@ -119,17 +114,38 @@ function fetchEpcot(){
     .then(heightElement)
 }
 //event listeners
-
+parkSelectors.addEventListener("click",(e)=> {
+    let parkTitle= document.getElementById('parkName')
+    let ridePark=document.querySelectorAll("[title]")    
+    ridePark==Array.prototype.slice.call(ridePark)
+    parkTitle.textContent=""
+    ridePark.forEach(row =>{
+        row.style.display="none"
+        
+        if(e.target.id=="all Parks"){
+            parkTitle.textContent="All Parks"
+        row.style.display="block" }
+        else if (e.target.id==row.title){
+            row.style.display="block" 
+            parkTitle.textContent=row.title
+            console.log(row.title)
+        }
+    })
    
-//functions
-function resetFields(){
-    openRideTable.innerHTML=" "
-    closedRideTable.innerHTML=" "
-}
-function resetFavoriteFields(){
-    favoriteRideTable.innerHTML=" "
-}
+    
+    })
 
+
+//functions
+
+function heightElement(heightData){
+    globalThis.over32=heightData[5].over32
+    globalThis.over35=heightData[4].over35
+    globalThis.over38=heightData[3].over38
+    globalThis.over40=heightData[2].over40
+    globalThis.over44=heightData[1].over44
+    globalThis.over48=heightData[0].over48 
+    }
 function displayFamily(members){
     members.forEach(member => {
     let memberButton = document.createElement('button')
@@ -467,6 +483,12 @@ function collectionlogger(arr){
          forEachRide(arr[1])
          forEachFavorite(arr[0])
          generateDropdown(arr[1])
+         resetButton.addEventListener("click", (e)=>{
+            div.innerHTML=" "
+            generateDropdown(arr[1])
+        
+        })
+          
         }
    return ++int.increment
     
@@ -489,10 +511,11 @@ function collectionlogger(arr){
   
 
 function generateDropdown(array){
-     let div = document.getElementById('dropdown') 
+    
+    let dropdown = document.createElement('select')
      let indexZero=document.createElement('option')
      indexZero.text="Choose Favorite Ride" 
-     let dropdown = document.createElement('select')
+     
      dropdown.appendChild(indexZero)
         div.appendChild(dropdown) 
     array.forEach(ride=>{
@@ -517,7 +540,7 @@ function generateDropdown(array){
     }
   
   function generateNextDropdown(array){
-    let div = document.getElementById('dropdown') 
+    
      let indexZero=document.createElement('option')
      indexZero.text="Choose 2nd Favorite Ride" 
      let dropdown = document.createElement('select')
@@ -543,7 +566,7 @@ function generateDropdown(array){
    
    }
    function generateThirdDropdown(array){
-    let div = document.getElementById('dropdown') 
+    
     let indexZero=document.createElement('option')
     indexZero.text="Choose 3rd Favorite Ride" 
     let dropdown = document.createElement('select')
@@ -569,7 +592,7 @@ function generateDropdown(array){
   
    }
    function generateFourthDropdown(array){
-    let div = document.getElementById('dropdown') 
+   
     let indexZero=document.createElement('option')
     indexZero.text="Choose 4th Favorite Ride" 
     let dropdown = document.createElement('select')
@@ -595,7 +618,7 @@ function generateDropdown(array){
  
    }
    function generateFifthDropdown(array){
-    let div = document.getElementById('dropdown') 
+  
     let indexZero=document.createElement('option')
     indexZero.text="Choose 5th Favorite Ride" 
     let dropdown = document.createElement('select')
@@ -621,7 +644,7 @@ function generateDropdown(array){
   
    }
    function generateSixthDropdown(array){
-    let div = document.getElementById('dropdown') 
+  
     let indexZero=document.createElement('option')
     indexZero.text="Choose 6th Favorite Ride" 
     let dropdown = document.createElement('select')
@@ -647,7 +670,7 @@ function generateDropdown(array){
   
    }
    function generateSeventhDropdown(array){
-    let div = document.getElementById('dropdown') 
+   
      let indexZero=document.createElement('option')
      indexZero.text="Choose 7th Favorite Ride" 
      let dropdown = document.createElement('select')
@@ -673,7 +696,7 @@ function generateDropdown(array){
   
    }
    function generateEighthDropdown(array){
-    let div = document.getElementById('dropdown') 
+ 
      let indexZero=document.createElement('option')
      indexZero.text="Choose 8th Favorite Ride" 
      let dropdown = document.createElement('select')
@@ -699,7 +722,7 @@ function generateDropdown(array){
   
    }
    function generateNinthDropdown(array){
-    let div = document.getElementById('dropdown') 
+   
     let indexZero=document.createElement('option')
     indexZero.text="Choose 9th Favorite Ride" 
     let dropdown = document.createElement('select')
@@ -726,7 +749,7 @@ function generateDropdown(array){
   
    }
    function generateTenthDropdown(array){
-    let div = document.getElementById('dropdown') 
+   
      let indexZero=document.createElement('option')
      indexZero.text="Choose 10th Favorite Ride" 
      let dropdown = document.createElement('select')
@@ -760,26 +783,6 @@ function generateFavoriteList(favorite){
     favoriteRideTable.appendChild(row)
 }
 
-parkSelectors.addEventListener("click",(e)=> {
-    let parkTitle= document.getElementById('parkName')
-    let ridePark=document.querySelectorAll("[title]")    
-    ridePark==Array.prototype.slice.call(ridePark)
-    parkTitle.textContent=""
-    ridePark.forEach(row =>{
-        row.style.display="none"
-        
-        if(e.target.id=="all Parks"){
-            parkTitle.textContent="All Parks"
-        row.style.display="block" }
-        else if (e.target.id==row.title){
-            row.style.display="block" 
-            parkTitle.textContent=row.title
-            console.log(row.title)
-        }
-    })
-   
-    
-    })
 function checkOpen(ride){
  
    
@@ -793,14 +796,7 @@ function checkOpen(ride){
     
 }
 
-function heightElement(heightData){
-    globalThis.over32=heightData[5].over32
-    globalThis.over35=heightData[4].over35
-    globalThis.over38=heightData[3].over38
-    globalThis.over40=heightData[2].over40
-    globalThis.over44=heightData[1].over44
-    globalThis.over48=heightData[0].over48 
-    }
+
 
 function renderOpenRideTable(ride){
     
