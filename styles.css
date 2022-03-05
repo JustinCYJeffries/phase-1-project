@@ -49,3 +49,6 @@ header{
   .button:active {
     background-color: #0a1347;
 }
+.hide{
+  display:none;
+}

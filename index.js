@@ -22,6 +22,7 @@ let int ={increment:0}
 let clickedUser = []
 const resetButton = document.querySelector("#reset")
 const div = document.getElementById('dropdown')
+const form= document.getElementById('newUserForm')
 //fetch
 //fetch family from db
 
@@ -128,13 +129,302 @@ parkSelectors.addEventListener("click",(e)=> {
         else if (e.target.id==row.title){
             row.style.display="block" 
             parkTitle.textContent=row.title
-            console.log(row.title)
+            
         }
     })
    
     
     })
+form.addEventListener("submit", (e)=>{
+    e.preventDefault()
+    console.log(e.target.name.value)
+    console.log(e.target.height.value)
 
+    let newUser = {
+        name:e.target.name.value,
+        height:e.target.height.value
+    }
+    if (e.target.favorite1.value=0){
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite2.value =0){
+        newUser.favorites=[{
+            name:e.target.favorite1.value,
+            rideValue:1
+        }]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite3.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite4.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite5.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        },
+        {
+            name:e.target.favorite4.value,
+            rideValue:4
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite6.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        },
+        {
+            name:e.target.favorite4.value,
+            rideValue:4
+        },
+        {
+            name:e.target.favorite5.value,
+            rideValue:5
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite7.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        },
+        {
+            name:e.target.favorite4.value,
+            rideValue:4
+        },
+        {
+            name:e.target.favorite5.value,
+            rideValue:5
+        },
+        {
+            name:e.target.favorite6.value,
+            rideValue:6
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite8.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        },
+        {
+            name:e.target.favorite4.value,
+            rideValue:4
+        },
+        {
+            name:e.target.favorite5.value,
+            rideValue:5
+        },
+        {
+            name:e.target.favorite6.value,
+            rideValue:6
+        },
+        {
+            name:e.target.favorite7.value,
+            rideValue:7
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite9.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        },
+        {
+            name:e.target.favorite4.value,
+            rideValue:4
+        },
+        {
+            name:e.target.favorite5.value,
+            rideValue:5
+        },
+        {
+            name:e.target.favorite6.value,
+            rideValue:6
+        },
+        {
+            name:e.target.favorite7.value,
+            rideValue:7
+        },
+        {
+            name:e.target.favorite8.value,
+            rideValue:8
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else if(e.target.favorite10.value =0){
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        },
+        {
+            name:e.target.favorite4.value,
+            rideValue:4
+        },
+        {
+            name:e.target.favorite5.value,
+            rideValue:5
+        },
+        {
+            name:e.target.favorite6.value,
+            rideValue:6
+        },
+        {
+            name:e.target.favorite7.value,
+            rideValue:7
+        },
+        {
+            name:e.target.favorite8.value,
+            rideValue:8
+        },
+        {
+            name:e.target.favorite9.value,
+            rideValue:9
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    else {
+        newUser.favorites=[
+            {
+            name:e.target.favorite1.value,
+            rideValue:1
+        },
+        {
+            name:e.target.favorite2.value,
+            rideValue:2
+        },
+        {
+            name:e.target.favorite3.value,
+            rideValue:3
+        },
+        {
+            name:e.target.favorite4.value,
+            rideValue:4
+        },
+        {
+            name:e.target.favorite5.value,
+            rideValue:5
+        },
+        {
+            name:e.target.favorite6.value,
+            rideValue:6
+        },
+        {
+            name:e.target.favorite7.value,
+            rideValue:7
+        },
+        {
+            name:e.target.favorite8.value,
+            rideValue:8
+        },
+        {
+            name:e.target.favorite9.value,
+            rideValue:9
+        },
+        {
+            name:e.target.favorite10.value,
+            rideValue:10
+        }
+    ]
+        updateNewUser(newUser)
+    }
+    function updateNewUser(newUser){
+        console.log(newUser)
+        return fetch('http://localhost:3000/jeffriesFamily', {
+            method:"PATCH",
+            
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(newUser)
+        })
+    }
+})
 
 //functions
 
@@ -484,7 +774,15 @@ function collectionlogger(arr){
          forEachFavorite(arr[0])
          generateDropdown(arr[1])
          resetButton.addEventListener("click", (e)=>{
-            div.innerHTML=" "
+            let dropdowns = document.querySelectorAll('select')
+            console.log(dropdowns)
+            dropdowns==Array.prototype.slice.call(dropdowns)
+            dropdowns.forEach(menu=> {
+                menu.innerHTML=" "
+                menu.disabled=false
+                menu.style={"display":"none;"}
+            })
+           
             generateDropdown(arr[1])
         
         })
@@ -512,19 +810,20 @@ function collectionlogger(arr){
 
 function generateDropdown(array){
     
-    let dropdown = document.createElement('select')
-     let indexZero=document.createElement('option')
+    let dropdown = document.querySelector('#favorite1')
+    dropdown.style={"display":"block;"}
+    let indexZero=document.createElement('option')
      indexZero.text="Choose Favorite Ride" 
-     
+     indexZero.value=0
      dropdown.appendChild(indexZero)
-        div.appendChild(dropdown) 
+       
     array.forEach(ride=>{
     
     let option = document.createElement('option')
         option.text=ride.name
         option.value=ride.name
         dropdown.appendChild(option)
-        div.appendChild(dropdown) 
+        
     })
     let newRides = []
     dropdown.onchange=(c)=>{
@@ -540,19 +839,23 @@ function generateDropdown(array){
     }
   
   function generateNextDropdown(array){
-    
+    let dropdown = document.querySelector('#favorite2')
+    dropdown.style={"display":"block;"}
      let indexZero=document.createElement('option')
+     
      indexZero.text="Choose 2nd Favorite Ride" 
-     let dropdown = document.createElement('select')
+     indexZero.value=0
+     
+    
      dropdown.appendChild(indexZero)
-        div.appendChild(dropdown) 
+       
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+      
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -566,19 +869,23 @@ function generateDropdown(array){
    
    }
    function generateThirdDropdown(array){
-    
+    let dropdown = document.querySelector('#favorite3')
+    dropdown.style={"display":"block;"} 
     let indexZero=document.createElement('option')
+    
     indexZero.text="Choose 3rd Favorite Ride" 
-    let dropdown = document.createElement('select')
+    indexZero.value=0
+   
+   
     dropdown.appendChild(indexZero)
-       div.appendChild(dropdown) 
+      
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+       
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -592,19 +899,22 @@ function generateDropdown(array){
   
    }
    function generateFourthDropdown(array){
-   
+    let dropdown = document.querySelector('#favorite4')
+    dropdown.style={"display":"block;"}
     let indexZero=document.createElement('option')
+    
     indexZero.text="Choose 4th Favorite Ride" 
-    let dropdown = document.createElement('select')
+    indexZero.value=0
+   
     dropdown.appendChild(indexZero)
-       div.appendChild(dropdown) 
+      
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+       
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -618,19 +928,21 @@ function generateDropdown(array){
  
    }
    function generateFifthDropdown(array){
-  
+    let dropdown = document.querySelector('#favorite5')
+    dropdown.style={"display":"block;"}
     let indexZero=document.createElement('option')
+    indexZero.value=0
     indexZero.text="Choose 5th Favorite Ride" 
-    let dropdown = document.createElement('select')
+    
     dropdown.appendChild(indexZero)
-       div.appendChild(dropdown) 
+       
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+      
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -644,19 +956,21 @@ function generateDropdown(array){
   
    }
    function generateSixthDropdown(array){
-  
+    let dropdown = document.querySelector('#favorite6')
+    dropdown.style={"display":"block;"}
     let indexZero=document.createElement('option')
+    indexZero.value=0
     indexZero.text="Choose 6th Favorite Ride" 
-    let dropdown = document.createElement('select')
+    
     dropdown.appendChild(indexZero)
-       div.appendChild(dropdown) 
+     
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+      
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -672,17 +986,19 @@ function generateDropdown(array){
    function generateSeventhDropdown(array){
    
      let indexZero=document.createElement('option')
+     indexZero.value=0
      indexZero.text="Choose 7th Favorite Ride" 
-     let dropdown = document.createElement('select')
+     let dropdown = document.querySelector('#favorite7')
+     dropdown.style={"display":"block;"}
      dropdown.appendChild(indexZero)
-        div.appendChild(dropdown) 
+       
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+      
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -698,17 +1014,19 @@ function generateDropdown(array){
    function generateEighthDropdown(array){
  
      let indexZero=document.createElement('option')
+     indexZero.value=0
      indexZero.text="Choose 8th Favorite Ride" 
-     let dropdown = document.createElement('select')
+     let dropdown = document.querySelector('#favorite8')
+     dropdown.style={"display":"block;"}
      dropdown.appendChild(indexZero)
-        div.appendChild(dropdown) 
+      
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+      
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -724,17 +1042,19 @@ function generateDropdown(array){
    function generateNinthDropdown(array){
    
     let indexZero=document.createElement('option')
+    indexZero.value=0
     indexZero.text="Choose 9th Favorite Ride" 
-    let dropdown = document.createElement('select')
+    let dropdown = document.querySelector('#favorite9')
+    dropdown.style={"display":"block;"}
     dropdown.appendChild(indexZero)
-       div.appendChild(dropdown) 
+      
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+     
    })
    let newRides = []
    dropdown.onchange=(c)=>{
@@ -751,17 +1071,19 @@ function generateDropdown(array){
    function generateTenthDropdown(array){
    
      let indexZero=document.createElement('option')
+     indexZero.value=0
      indexZero.text="Choose 10th Favorite Ride" 
-     let dropdown = document.createElement('select')
+     let dropdown = document.querySelector('#favorite10')
+     dropdown.style={"display":"block;"}
      dropdown.appendChild(indexZero)
-        div.appendChild(dropdown) 
+      
    array.forEach(ride=>{
    
    let option = document.createElement('option')
        option.text=ride.name
        option.value=ride.name
        dropdown.appendChild(option)
-       div.appendChild(dropdown) 
+      
    })
    
    }
