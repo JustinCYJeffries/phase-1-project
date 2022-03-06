@@ -143,18 +143,18 @@
     },
     {
       "name": "franklin",
-      "height": "over35",
+      "height": "over38",
       "favorites": [
         {
-          "name": "Spaceship Earth",
+          "name": "Journey Into Imagination With Figment",
           "rideValue": 1
         },
         {
-          "name": "Guardians of the Galaxy: Cosmic Rewind",
+          "name": "Mission: SPACE",
           "rideValue": 2
         },
         {
-          "name": "Journey Into Imagination With Figment",
+          "name": "Awesome Planet",
           "rideValue": 3
         }
       ],
@@ -162,67 +162,37 @@
     },
     {
       "name": "franklin1",
-      "height": "over35",
+      "height": "over40",
       "favorites": [
         {
-          "name": "Pangani Forest Exploration Trail",
+          "name": "Casey Jr. Splash 'N' Soak Station",
           "rideValue": 1
         },
         {
-          "name": "Kali River Rapids",
+          "name": "Walt Disney's Enchanted Tiki Room",
           "rideValue": 2
         },
         {
-          "name": "Wildlife Express Train",
+          "name": "Dumbo the Flying Elephant",
           "rideValue": 3
+        },
+        {
+          "name": "A Pirate's Adventure - Treasures of the Seven Seas",
+          "rideValue": 4
         }
       ],
       "id": 5
     },
     {
-      "name": "franklin3",
-      "height": "over35",
-      "favorites": [
-        {
-          "name": "Mission: SPACE",
-          "rideValue": 1
-        },
-        {
-          "name": "Living with the Land",
-          "rideValue": 2
-        },
-        {
-          "name": "Test Track Presented by Chevrolet",
-          "rideValue": 3
-        }
-      ],
-      "id": 6
-    },
-    {
-      "name": "franklin4",
-      "height": "over44",
-      "favorites": [
-        {
-          "name": "Pangani Forest Exploration Trail",
-          "rideValue": 1
-        },
-        {
-          "name": "Kilimanjaro Safaris",
-          "rideValue": 2
-        }
-      ],
-      "id": 7
-    },
-    {
-      "name": "franklin5",
-      "height": "over44",
+      "name": "franklin2",
+      "height": "over40",
       "favorites": [
         {
           "name": "Awesome Planet",
           "rideValue": 1
         },
         {
-          "name": "Soarin'",
+          "name": "Test Track Presented by Chevrolet",
           "rideValue": 2
         },
         {
@@ -230,7 +200,30 @@
           "rideValue": 3
         }
       ],
-      "id": 8
+      "id": 6
+    },
+    {
+      "name": "franklin3",
+      "height": "over40",
+      "favorites": [
+        {
+          "name": "Awesome Planet",
+          "rideValue": 1
+        },
+        {
+          "name": "Test Track Presented by Chevrolet",
+          "rideValue": 2
+        },
+        {
+          "name": "Journey Into Imagination With Figment",
+          "rideValue": 3
+        },
+        {
+          "name": "Spaceship Earth",
+          "rideValue": 4
+        }
+      ],
+      "id": 7
     }
   ],
   "rideHeights": [

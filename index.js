@@ -435,8 +435,10 @@ function resetTables(){
             memberButton.height = member.height
             peopleSelectors.appendChild(memberButton)
             let favoriteList = member.favorites
-            favoriteData.push(favoriteList)
-            favoriteData.forEach(name => {
+            favoriteList.forEach(name=>{
+                name.memberName=member.name
+                favoriteData.push(name)})
+             favoriteData.forEach(name => {
                     for (let i = 0; i < rideData.length; i++) {
                         if (name.name === rideData[i].name) {
                             Object.assign(name, rideData[i])
@@ -450,8 +452,147 @@ function resetTables(){
                 })   
                 forEachRide(rideData)
                 forEachFavorite(favoriteData)
+                console.log(favoriteData)
                 generateDropdown(rideData)
-            
+                memberButton.addEventListener("click", (e) => {
+                    let favTable = document.getElementById("favoriteRides")
+                    let notTallTitle = document.querySelector("#notTallEnoughTitle")
+                    notTallTitle.textContent = ""
+                    let tempNoTable = []
+                    tempNoTable = Array.prototype.slice.call(notTallTable.children)
+                    tempNoTable.forEach(row => {
+                        row.style.display = "none"
+                    })
+                    favTable = Array.prototype.slice.call(favTable.children)
+                    favTable.forEach(row => {
+                        row.style.display = "none"
+                    })
+                    clickedUser = {
+                        id: e.target.id,
+                        name: e.target.name
+                    }
+                    if (clickedUser.id == memberButton.id) {
+    
+                        favoriteRideTitle.innerHTML = `${clickedUser.name}'s favorite rides!`
+                        let clicked = document.getElementsByClassName(clickedUser.name)
+                        clicked = Array.prototype.slice.call(clicked)
+                        clicked.forEach(row => {
+                            row.style.display = "block"
+                        })
+    
+    
+                    }
+                    if (e.target.height != "over48") {
+    
+                        notTallTitle.textContent = "Not Tall Enough"
+                    }
+                    let heightOver48 = notTallTable.getElementsByClassName("over48inches")
+                    let heightOver44 = notTallTable.getElementsByClassName("over44inches")
+                    let heightOver40 = notTallTable.getElementsByClassName("over40inches")
+                    let heightOver38 = notTallTable.getElementsByClassName("over38inches")
+                    let heightOver35 = notTallTable.getElementsByClassName("over35inches")
+                    let heightOver32 = notTallTable.getElementsByClassName("over32inches")
+                    if (e.target.height == "over44") {
+                        heightOver48 = Array.prototype.slice.call(heightOver48)
+                        heightOver48.forEach(row => {
+                            row.style.display = "block"
+                        })
+                    }
+                    if (e.target.height === "over40") {
+                        heightOver48 = Array.prototype.slice.call(heightOver48)
+                        heightOver48.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver44 = Array.prototype.slice.call(heightOver44)
+                        heightOver44.forEach(row => {
+                            row.style.display = "block"
+                        })
+                    }
+                    if (e.target.height === "over38") {
+                        heightOver48 = Array.prototype.slice.call(heightOver48)
+                        heightOver48.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver44 = Array.prototype.slice.call(heightOver44)
+                        heightOver44.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver40 = Array.prototype.slice.call(heightOver40)
+                        heightOver40.forEach(row => {
+                            row.style.display = "block"
+                        })
+                    }
+                    if (e.target.height == "over35") {
+                        heightOver48 = Array.prototype.slice.call(heightOver48)
+                        heightOver48.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver44 = Array.prototype.slice.call(heightOver44)
+                        heightOver44.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver40 = Array.prototype.slice.call(heightOver40)
+                        heightOver40.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver38 = Array.prototype.slice.call(heightOver38)
+                        heightOver38.forEach(row => {
+                            row.style.display = "block"
+                        })
+                    }
+                    if (e.target.height == "over32") {
+                        heightOver48 = Array.prototype.slice.call(heightOver48)
+                        heightOver48.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver44 = Array.prototype.slice.call(heightOver44)
+                        heightOver44.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver40 = Array.prototype.slice.call(heightOver40)
+                        heightOver40.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver38 = Array.prototype.slice.call(heightOver38)
+                        heightOver38.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver35 = Array.prototype.slice.call(heightOver35)
+                        heightOver35.forEach(row => {
+                            row.style.display = "block"
+                        })
+                    }
+                    if (e.target.height == "under32") {
+                        heightOver48 = Array.prototype.slice.call(heightOver48)
+                        heightOver48.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver44 = Array.prototype.slice.call(heightOver44)
+                        heightOver44.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver40 = Array.prototype.slice.call(heightOver40)
+                        heightOver40.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver38 = Array.prototype.slice.call(heightOver38)
+                        heightOver38.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver35 = Array.prototype.slice.call(heightOver35)
+                        heightOver35.forEach(row => {
+                            row.style.display = "block"
+                        })
+                        heightOver32 = Array.prototype.slice.call(heightOver32)
+                        heightOver32.forEach(row => {
+                            row.style.display = "block"
+                        })
+                    }
+                }
+    
+    
+    
+                )
     }
     //Displays Family buttons
     function displayFamily(members) {
