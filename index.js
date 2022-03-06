@@ -23,26 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const resetButton = document.querySelector("#reset")
     const form = document.getElementById('newUserForm')
     //fetch
-    function resetPage(){
-        peopleSelectors.innerHTML= " "
-        openRideTable.innerHTML=" "
-        closedRidetitle.innerHTML=" "
-        openRidetitle.innerHTML=" "
-        favoriteRideTable.innerHTML=" "
-        favoriteRideTitle.innerHTML=" "
-        notTallTable.innerHTML=" "
-        document.querySelector("#loader").classList.remove('hide')
-        form.classList.add('hide')
+    
+function resetTables(){
+    closedRideTable.innerHTML=" "
+    openRideTable.innerHTML=" "
+    favoriteRideTable.innerHTML=" "
+    notTallTable.innerHTML=" "
+}
+    
         
-    }
-
-    function fetchFunction(){
-        fetchHeightInfo()
-        fetchFamily()
-        fetchAnimalKingdom()
-        fetchMagicKingdom()
-        fetchHollywoodStudios()
-        fetchEpcot()
     function fetchFamily() {
         fetch("http://localhost:3000/jeffriesFamily")
             .then(r => r.json())
@@ -85,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             })
     }
-}
+
     //event listeners
     parkSelectors.addEventListener("click", (e) => {
         let parkTitle = document.getElementById('parkName')
@@ -116,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let j=0
         members=Array.prototype.slice.call(peopleSelectors.children)
         for(let i =0; i<members.length;i++){
-        console.log(members[i])
 
         if(members[i].name==newUser.name){
            
@@ -418,7 +406,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newUser)
-            }).then()
+            })  .then(r=>r.json())
+                .then(r =>{
+                    resetTables()
+                    addButton(r)
+                    
+                })
         }
     })
 
@@ -432,7 +425,34 @@ document.addEventListener("DOMContentLoaded", () => {
         globalThis.over44 = heightData[1].over44
         globalThis.over48 = heightData[0].over48
     }
+    function addButton(member){
+        let memberButton = document.createElement('button')
+            memberButton.name = member.name
+            memberButton.classList = "button"
+            memberButton.id = member.id
+            memberButton.innerHTML = member.name
+            memberButton.favorites = member.favorites
+            memberButton.height = member.height
+            peopleSelectors.appendChild(memberButton)
+            let favoriteList = member.favorites
+            favoriteData.push(favoriteList)
+            favoriteData.forEach(name => {
+                    for (let i = 0; i < rideData.length; i++) {
+                        if (name.name === rideData[i].name) {
+                            Object.assign(name, rideData[i])
     
+    
+    
+                        }
+    
+                    }
+    
+                })   
+                forEachRide(rideData)
+                forEachFavorite(favoriteData)
+                generateDropdown(rideData)
+            
+    }
     //Displays Family buttons
     function displayFamily(members) {
        
@@ -661,6 +681,8 @@ document.addEventListener("DOMContentLoaded", () => {
         int.increment = int.increment || 0
 
         if (int.increment == 4) {
+            favoriteData=arr[0]
+            rideData=arr[1]
             arr[0].forEach(name => {
                 for (let i = 0; i < arr[1].length; i++) {
                     if (name.name === arr[1][i].name) {
@@ -1125,7 +1147,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    fetchFunction()
+    fetchHeightInfo()
+        fetchFamily()
+        fetchAnimalKingdom()
+        fetchMagicKingdom()
+        fetchHollywoodStudios()
+        fetchEpcot()
 
 
 

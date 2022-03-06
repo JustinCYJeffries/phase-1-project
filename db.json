@@ -142,87 +142,30 @@
       ]
     },
     {
-      "name": "Krevlin",
-      "height": "over38",
+      "name": "franklin",
+      "height": "over35",
       "favorites": [
         {
-          "name": "Kilimanjaro Safaris",
+          "name": "Spaceship Earth",
           "rideValue": 1
         },
         {
-          "name": "DINOSAUR",
+          "name": "Guardians of the Galaxy: Cosmic Rewind",
           "rideValue": 2
         },
         {
-          "name": "TriceraTop Spin",
+          "name": "Journey Into Imagination With Figment",
           "rideValue": 3
         }
       ],
       "id": 4
     },
     {
-      "name": "hubert",
-      "height": "over38",
+      "name": "franklin1",
+      "height": "over35",
       "favorites": [
         {
-          "name": "Test Track Presented by Chevrolet",
-          "rideValue": 1
-        },
-        {
-          "name": "Living with the Land",
-          "rideValue": 2
-        },
-        {
-          "name": "Disney & Pixar Short Film Festival",
-          "rideValue": 3
-        }
-      ],
-      "id": 5
-    },
-    {
-      "name": "franklin",
-      "height": "over38",
-      "favorites": [
-        {
-          "name": "Guardians of the Galaxy: Cosmic Rewind",
-          "rideValue": 1
-        },
-        {
-          "name": "Mission: SPACE",
-          "rideValue": 2
-        }
-      ],
-      "id": 6
-    },
-    {
-      "name": "franklin2",
-      "height": "over38",
-      "favorites": [
-        {
-          "name": "Disney & Pixar Short Film Festival",
-          "rideValue": 1
-        },
-        {
-          "name": "Test Track Presented by Chevrolet",
-          "rideValue": 2
-        },
-        {
-          "name": "Living with the Land",
-          "rideValue": 3
-        },
-        {
-          "name": "The Seas with Nemo & Friends",
-          "rideValue": 4
-        }
-      ],
-      "id": 7
-    },
-    {
-      "name": "franklin3",
-      "height": "over38",
-      "favorites": [
-        {
-          "name": "Kilimanjaro Safaris",
+          "name": "Pangani Forest Exploration Trail",
           "rideValue": 1
         },
         {
@@ -230,128 +173,64 @@
           "rideValue": 2
         },
         {
-          "name": "The Boneyard",
-          "rideValue": 3
-        }
-      ],
-      "id": 8
-    },
-    {
-      "name": "franklin4",
-      "height": "over38",
-      "favorites": [
-        {
-          "name": "Guardians of the Galaxy: Cosmic Rewind",
-          "rideValue": 1
-        },
-        {
-          "name": "Test Track Presented by Chevrolet",
-          "rideValue": 2
-        },
-        {
-          "name": "Journey Into Imagination With Figment",
-          "rideValue": 3
-        }
-      ],
-      "id": 9
-    },
-    {
-      "name": "franklin5",
-      "height": "over38",
-      "favorites": [
-        {
-          "name": "Expedition Everest - Legend of the Forbidden Mountain®",
-          "rideValue": 1
-        },
-        {
-          "name": "DINOSAUR",
-          "rideValue": 2
-        }
-      ],
-      "id": 10
-    },
-    {
-      "name": "franklin6",
-      "height": "over38",
-      "favorites": [
-        {
-          "name": "Guardians of the Galaxy: Cosmic Rewind",
-          "rideValue": 1
-        },
-        {
-          "name": "Awesome Planet",
-          "rideValue": 2
-        }
-      ],
-      "id": 11
-    },
-    {
-      "name": "franklin7",
-      "height": "over38",
-      "favorites": [
-        {
-          "name": "The Boneyard",
-          "rideValue": 1
-        },
-        {
-          "name": "Pangani Forest Exploration Trail",
-          "rideValue": 2
-        },
-        {
           "name": "Wildlife Express Train",
           "rideValue": 3
         }
       ],
-      "id": 12
+      "id": 5
     },
     {
-      "name": "franklin8",
-      "height": "over38",
+      "name": "franklin3",
+      "height": "over35",
       "favorites": [
         {
-          "name": "Journey Into Imagination With Figment",
+          "name": "Mission: SPACE",
           "rideValue": 1
         },
         {
-          "name": "Spaceship Earth",
+          "name": "Living with the Land",
           "rideValue": 2
         },
         {
-          "name": "Guardians of the Galaxy: Cosmic Rewind",
+          "name": "Test Track Presented by Chevrolet",
           "rideValue": 3
         }
       ],
-      "id": 13
+      "id": 6
     },
     {
-      "name": "franklin9",
-      "height": "over40",
+      "name": "franklin4",
+      "height": "over44",
       "favorites": [
         {
-          "name": "it's a small world",
+          "name": "Pangani Forest Exploration Trail",
           "rideValue": 1
         },
         {
-          "name": "Rock 'n' Roller Coaster Starring Aerosmith",
+          "name": "Kilimanjaro Safaris",
           "rideValue": 2
         }
       ],
-      "id": 14
+      "id": 7
     },
     {
-      "name": "franklin10",
-      "height": "over40",
+      "name": "franklin5",
+      "height": "over44",
       "favorites": [
         {
-          "name": "Star Wars: Rise of the Resistance",
+          "name": "Awesome Planet",
           "rideValue": 1
         },
         {
-          "name": "Millennium Falcon: Smugglers Run",
+          "name": "Soarin'",
           "rideValue": 2
+        },
+        {
+          "name": "Journey Into Imagination With Figment",
+          "rideValue": 3
         }
       ],
-      "id": 15
+      "id": 8
     }
   ],
   "rideHeights": [
