@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let clickedUser = []
     const resetButton = document.querySelector("#reset")
     const form = document.getElementById('newUserForm')
+    const parkTitle = document.getElementById('parkName')
+    const notTallTitle = document.querySelector("#notTallEnoughTitle")
+    const nameField = document.getElementById('name')
     //fetch
     
 function resetTables(){
@@ -29,6 +32,12 @@ function resetTables(){
     openRideTable.innerHTML=" "
     favoriteRideTable.innerHTML=" "
     notTallTable.innerHTML=" "
+    favoriteRideTitle.innerHTML=""
+    parkTitle.innerHTML=""
+    notTallTitle.innerHTML=""
+    resetDropdowns()
+    nameField.value=""
+    document.querySelector('input[name="height"]:checked').checked=false
 }
     
         
@@ -77,7 +86,7 @@ function resetTables(){
 
     //event listeners
     parkSelectors.addEventListener("click", (e) => {
-        let parkTitle = document.getElementById('parkName')
+       
         let ridePark = document.querySelectorAll("[title]")
         closedRideTable.classList.remove("hide")
         closedRidetitle.classList.remove("hide")
@@ -414,6 +423,11 @@ function resetTables(){
                 })
         }
     })
+    resetButton.addEventListener("click", (e) => {
+        resetDropdowns()
+        generateDropdown(rideData)
+
+    })
 
     //functions
     //Collects Height Data
@@ -615,7 +629,7 @@ function resetTables(){
             }
             memberButton.addEventListener("click", (e) => {
                 let favTable = document.getElementById("favoriteRides")
-                let notTallTitle = document.querySelector("#notTallEnoughTitle")
+               
                 notTallTitle.textContent = ""
                 let tempNoTable = []
                 tempNoTable = Array.prototype.slice.call(notTallTable.children)
@@ -838,12 +852,8 @@ function resetTables(){
             })
             forEachRide(arr[1])
             forEachFavorite(arr[0])
-            generateDropdown(arr[1])
-            resetButton.addEventListener("click", (e) => {
-                resetDropdowns()
-                generateDropdown(arr[1])
-
-            })
+            generateDropdown(rideData)
+            
 
         }
         return ++int.increment
