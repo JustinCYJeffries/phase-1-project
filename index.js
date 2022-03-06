@@ -96,8 +96,13 @@ function resetTables(){
         parkTitle.textContent = ""
         ridePark.forEach(row => {
             row.style.display = "none"
+            if(row.title==="No special characters or spaces"){
+                row.style.display = "block"
+                row.style = "{text_align:center;}"
+            }
+            
 
-            if (e.target.id == "all Parks") {
+            else if (e.target.id == "all Parks") {
                 parkTitle.textContent = "All Parks"
                 row.style.display = "block"
             }
@@ -1179,7 +1184,7 @@ function resetTables(){
     }
     //this function puts the favorite list on the DOM with the wait time 
     function generateFavoriteList(favorite) {
-        
+        console.log(favorite)
         let row = document.createElement('tr')
         row.classList.add(favorite.memberName)
         
@@ -1197,7 +1202,24 @@ function resetTables(){
         row.appendChild(cell2)
         row.appendChild(cell3)
         favoriteRideTable.appendChild(row)
+        console.log(favorite.is_open)
+
+        if(parseInt(`${favorite.wait_time}`)>75){
+            cell2.classList.add('highTime')
+            cell1.classList.add('highTime')
+            cell3.classList.add('highTime')
+        }
+        else if(parseInt(`${favorite.wait_time}`)>45){
+            cell2.classList.add('mediumTime')
+            cell1.classList.add('mediumTime')
+            cell3.classList.add('mediumTime')
+        }
+        else if(favorite.is_open!=true){
+        cell2.classList.add('closedRide')
+        cell1.classList.add('closedRide')
+        cell3.classList.add('closedRide')
     }
+}
     //fed from for each ride, checks if the ride is open
     function checkOpen(ride) {
 
@@ -1221,10 +1243,13 @@ function resetTables(){
             openRidetitle.classList.add("hide")
             openRidetitle.textContent = "These Rides are Open"
             let row = document.createElement('tr')
-            let heading1 = document.createElement('th')
-            heading1.innerHTML = "Ride Name"
-            let heading2 = document.createElement('th')
-            heading2.innerHTML = "Wait time"
+            row.style.display='block'
+            let heading1 = document.createElement('td')
+            heading1.innerHTML = "<strong>Ride Name</strong>"
+            heading1.classList.add('openHeader')
+            let heading2 = document.createElement('td')
+            heading2.innerHTML = "<strong>Wait time</strong>"
+            heading2.classList.add('timeHeader')
             row.appendChild(heading1)
             row.appendChild(heading2)
             openRideTable.appendChild(row)
@@ -1246,6 +1271,14 @@ function resetTables(){
         let cell2 = document.createElement('td')
         cell2.classList.add('times')
         cell2.innerHTML = `${ride.wait_time}`
+        if(parseInt(`${ride.wait_time}`)>75){
+            cell2.classList.add('highTime')
+            cell1.classList.add('highTime')
+        }
+        else if(parseInt(`${ride.wait_time}`)>45){
+            cell2.classList.add('mediumTime')
+            cell1.classList.add('mediumTime')
+        }
         row.appendChild(cell1)
         row.appendChild(cell2)
         openRideTable.appendChild(row)
@@ -1292,7 +1325,7 @@ function resetTables(){
         cell1.innerHTML = `${ride.name}`
         cell1.classList.add('names')
         row.appendChild(cell1)
-
+        cell1.classList.add('closedRide')
         closedRideTable.appendChild(row)
 
     }

@@ -20,7 +20,7 @@
     <button type="button" class="button" id="Animal Kingdom">Animal Kingdom</button>
 </section>
 <section id="peopleSelectors">
-    <button type="button" class="button" id="newUser">New User</button>
+    <a href='#newUserForm'><button type="button" class="button" id="newUser">New User</button></a>
 <span id="populatePeople"></span>
 
     
@@ -34,24 +34,47 @@
         </tr>
         <tr>
         <td width="33%"><h3 id="closedRideTitle" class="header"></h3></td>
-        <td width="33%"><h3 id="openRideTitle" class="header"></h3></td>
+        <td width="33%" ><h3 id="openRideTitle" class="header"></h3></td>
         <td ><h3 id="notTallEnoughTitle" class="header"></h3></td>
         <td><h3 id="favoriteRideTitle" class="header"></h3></td>
     </tr>
     <tr>
         <td class="header" ><table id="closedRides" class='tableBorder'></table></td>
-        <td class="header"  ><table id="openRides" class='tableBorder'></table></td>
+        <td class="header"><table id="openRides" class='tableBorder'></table></td>
         <td class="header" ><table id="notTallEnough" class='tableBorder'></table></td>
         <td class="header" ><table id="favoriteRides" class='tableBorder'></table></td>
     </tr>
 </table>
 
 </section>
-<div id="loader" class="loading">Please wait while page loads</div>
+<div id="loader" class="loading"><h2>Please wait while page loads</h2>
+    <br>Key:
+    <table>
+        <tr>
+            <td width="71%"></td>
+            <td class="highTime" width="50px"></td>
+            <td>= Wait Times Over 75 mins</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="mediumTime" width="50px"></td>
+            <td>= Wait Times Between 45 and 75 mins</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="closedRide" width="50px"></td>
+            <td>= The Ride is Closed</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
 <section>
+    <div class="form">
     <form id="newUserForm" class="hide">
         <label for="name">Enter Name</label><br>
-        <input type="text" name="name" placeholder="Name" id="name" pattern="[A-Za-z0-9]{1,25}"title="No special characters or spaces" required style="display:block;"/><br>
+        <input type="text" name="name" placeholder="Name" id="name" pattern="[A-Za-z0-9]{1,25}"title="No special characters or spaces" required /><br>
         <label for="height">Enter Height</label><br>
         <input type="radio" name="height" value="under32" required/>Under 32"<br />
         <input type="radio" name="height" value="over32" />Under 35"<br />
@@ -59,20 +82,22 @@
         <input type="radio" name="height" value="over38" />Under 40"<br />
         <input type="radio" name="height" value="over40" />Under 44"<br />
         <input type="radio" name="height" value="over44" />Under 48"<br />
-        <input type="radio" name="height" value="over48" />Over 48"<br />
+        <input type="radio" name="height" value="over48" />Over 48"<br /><br />
+        <label for="name">Enter Your Top Ten Favorite Rides</label><br>
         <select name="favorite1" id="favorite1"></select><br/>
-        <select name="favorite2" id="favorite2" class="hide"></select><br/>
-        <select name="favorite3" id="favorite3" class="hide"></select><br/>
-        <select name="favorite4" id="favorite4" class="hide"></select><br/>
-        <select name="favorite5" id="favorite5" class="hide"></select><br/>
-        <select name="favorite6" id="favorite6" class="hide"></select><br/>
-        <select name="favorite7" id="favorite7" class="hide"></select><br/>
-        <select name="favorite8" id="favorite8" class="hide"></select><br/>
-        <select name="favorite9" id="favorite9" class="hide"></select><br/>
-        <select name="favorite10" id="favorite10" class="hide"></select><br/>
+        <div ><select name="favorite2" id="favorite2" class="hide"></select></div >
+        <div ><select name="favorite3" id="favorite3" class="hide"></select></div >
+        <div ><select name="favorite4" id="favorite4" class="hide"></select></div >
+        <div ><select name="favorite5" id="favorite5" class="hide"></select></div >
+        <div ><select name="favorite6" id="favorite6" class="hide"></select></div >
+        <div ><select name="favorite7" id="favorite7" class="hide"></select></div >
+        <div ><select name="favorite8" id="favorite8" class="hide"></select></div >
+        <div ><select name="favorite9" id="favorite9" class="hide"></select></div >
+        <div ><select name="favorite10" id="favorite10" class="hide"></select></div >
         <button type="reset" id="reset">Reset</button>
         <button type="submit" id="submit">Submit</button>
     </form>
+</div>
 </section>
 
 

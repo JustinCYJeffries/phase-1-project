@@ -59,13 +59,13 @@ header{
   background-color: gold;
 }
 .names{
-  width: 300px;
+  width: 400px;
   text-align: center;
   border: solid black 1px;
   background-color: white;
 }
 .times{
-  width:50px;
+  width:100px;
   text-align: center;
   border: solid black 1px;
   background-color: white;
@@ -76,4 +76,34 @@ header{
 }
 body{
   background-color: #c6ceda;
+}
+.openHeader{
+  width:400px;
+  text-align: center;
+  display: table-cell;
+  
+}
+.timeHeader{
+  width: 100px;
+  text-align: center;
+}
+.highTime{
+  background-color: #f3bfc8;
+}
+.mediumTime{
+  background-color: #e8f575;
+}
+.closedRide{
+  background-color:#7db5ff
+}
+div.form{
+  display:block;
+  text-align:center;
+  background-color: white;
+}
+form{
+  display:inline-block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
 }
