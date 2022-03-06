@@ -21,10 +21,8 @@ let totalRides = []
 let int ={increment:0}
 let clickedUser = []
 const resetButton = document.querySelector("#reset")
-const div = document.getElementById('dropdown')
 const form= document.getElementById('newUserForm')
 //fetch
-//fetch family from db
 
 
 
@@ -37,76 +35,29 @@ function fetchAnimalKingdom(){
     fetch("https://queue-times.com/en-US/parks/8/queue_times.json",)
     .then(r => r.json())
     .then(function (r){
-        cleanUpFetchAK(r)
+        cleanUpFetch(r, "Animal Kingdom")
         })
 }
 function fetchMagicKingdom(){
     fetch("https://queue-times.com/en-US/parks/6/queue_times.json",)
     .then(r => r.json())
-    .then(function (r){
-        cleanUpFetchMK(r)
+    .then((r)=>{
+        cleanUpFetch(r, "Magic Kingdom")
         })
 }
 
 function fetchHollywoodStudios(){
     fetch("https://queue-times.com/en-US/parks/7/queue_times.json")
     .then(r => r.json())
-    .then(function (r){
-        cleanUpFetchHS(r)
+    .then((r)=>{
+        cleanUpFetch(r, "Hollywood Studios")
         })
 }
 function fetchEpcot(){
     fetch("https://queue-times.com/en-US/parks/5/queue_times.json",)
     .then(r => r.json())
-    .then(function (r){
-        let landProp = r.lands
-      for(i=0; i<landProp.length; i++){
-        landProp[i].rides.forEach(ride=>{
-            ride.park="Epcot",
-            ride.height="under32"
-            over48.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over48inches"
-                    
-                }
-            })
-            over44.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over44inches"
-                    
-                }
-            })
-            over40.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over40inches"
-                   
-                }
-            })
-            over38.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over38inches"
-                   
-                }
-            })
-            over35.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over35inches"
-                  
-                }
-            })
-            over32.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over32inches"
-                   
-                }
-            })
-           rideArray.push(ride)
-           
-        })
-
-      } 
-      rideCollection(rideArray)
-        
+    .then((r)=>{
+        cleanUpFetch(r, "Epcot")
         })
 }
  function fetchHeightInfo() {
@@ -144,17 +95,18 @@ form.addEventListener("submit", (e)=>{
         name:e.target.name.value,
         height:e.target.height.value
     }
-    if (e.target.favorite1.value=0){
+  
+    if (e.target.favorite1.value===0){
         updateNewUser(newUser)
     }
-    else if(e.target.favorite2.value =0){
+    else if(e.target.favorite2.value===0){
         newUser.favorites=[{
             name:e.target.favorite1.value,
             rideValue:1
         }]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite3.value =0){
+    else if(e.target.favorite3.value ===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -167,7 +119,7 @@ form.addEventListener("submit", (e)=>{
     ]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite4.value =0){
+    else if(e.target.favorite4.value ===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -184,7 +136,7 @@ form.addEventListener("submit", (e)=>{
     ]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite5.value =0){
+    else if(e.target.favorite5.value===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -205,7 +157,7 @@ form.addEventListener("submit", (e)=>{
     ]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite6.value =0){
+    else if(e.target.favorite6.value ===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -230,7 +182,7 @@ form.addEventListener("submit", (e)=>{
     ]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite7.value =0){
+    else if(e.target.favorite7.value ===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -259,7 +211,7 @@ form.addEventListener("submit", (e)=>{
     ]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite8.value =0){
+    else if(e.target.favorite8.value ===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -292,7 +244,7 @@ form.addEventListener("submit", (e)=>{
     ]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite9.value =0){
+    else if(e.target.favorite9.value ===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -329,7 +281,7 @@ form.addEventListener("submit", (e)=>{
     ]
         updateNewUser(newUser)
     }
-    else if(e.target.favorite10.value =0){
+    else if(e.target.favorite10.value ===0){
         newUser.favorites=[
             {
             name:e.target.favorite1.value,
@@ -418,7 +370,7 @@ form.addEventListener("submit", (e)=>{
     function updateNewUser(newUser){
         console.log(newUser)
         return fetch('http://localhost:3000/jeffriesFamily', {
-            method:"PATCH",
+            method:"POST",
             
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(newUser)
@@ -427,7 +379,7 @@ form.addEventListener("submit", (e)=>{
 })
 
 //functions
-
+//Collects Height Data
 function heightElement(heightData){
     globalThis.over32=heightData[5].over32
     globalThis.over35=heightData[4].over35
@@ -436,6 +388,7 @@ function heightElement(heightData){
     globalThis.over44=heightData[1].over44
     globalThis.over48=heightData[0].over48 
     }
+//Displays Family buttons
 function displayFamily(members){
     members.forEach(member => {
     let memberButton = document.createElement('button')
@@ -596,12 +549,12 @@ function displayFamily(members){
     rideCollection(favoriteArray)
 }
 
-
-function cleanUpFetchMK(lands){
+//formats the Fetch and spplies height and park elements
+function cleanUpFetch(lands, land){
     let landProp = lands.lands
       for(i=0; i<landProp.length; i++){
         landProp[i].rides.forEach(ride=>{
-            ride.park="Magic Kingdom",
+            ride.park=land,
             ride.height="under32"
             over48.forEach(bigride =>{
                 if(bigride==ride.name){
@@ -646,114 +599,18 @@ function cleanUpFetchMK(lands){
       } 
       rideCollection(rideArray) 
 }
-function cleanUpFetchAK(lands){
-    let landProp = lands.lands
-      for(i=0; i<landProp.length; i++){
-        landProp[i].rides.forEach(ride=>{
-            ride.park="Animal Kingdom",
-            ride.height="under32"
-            over48.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over48inches"
-                    
-                }
-            })
-            over44.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over44inches"
-                    
-                }
-            })
-            over40.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over40inches"
-                   
-                }
-            })
-            over38.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over38inches"
-                   
-                }
-            })
-            over35.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over35inches"
-                  
-                }
-            })
-            over32.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over32inches"
-                   
-                }
-            })
-           rideArray.push(ride)
-           
-        })
-
-      } 
-      rideCollection(rideArray) 
-}
-function cleanUpFetchHS(lands){
-    let landProp = lands.lands
-      for(i=0; i<landProp.length; i++){
-        landProp[i].rides.forEach(ride=>{
-            ride.park="Hollywood Studios",
-            ride.height="under32"
-            over48.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over48inches"
-                    
-                }
-            })
-            over44.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over44inches"
-                    
-                }
-            })
-            over40.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over40inches"
-                   
-                }
-            })
-            over38.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over38inches"
-                   
-                }
-            })
-            over35.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over35inches"
-                  
-                }
-            })
-            over32.forEach(bigride =>{
-                if(bigride==ride.name){
-                    ride.height="over32inches"
-                   
-                }
-            })
-           rideArray.push(ride)
-           
-        })
-
-      } 
-      rideCollection(rideArray) 
-}
-function cleanUpFetchEP(lands){
-     
-}
 
 
 
+//collects the cleaned up fetches and pushes them into an array
 function rideCollection(array){
     totalRides.push(array)
    collectionlogger(totalRides)
 }
+
+// takes the array from the ride collection and runs 
+// on the 4th run once all of the fetches complete it shares data between the fetches
+//this allows ride times to appear on the favorites list
 function collectionlogger(arr){
    int.increment = int.increment || 0
   
@@ -780,7 +637,7 @@ function collectionlogger(arr){
             dropdowns.forEach(menu=> {
                 menu.innerHTML=" "
                 menu.disabled=false
-                menu.style={"display":"none;"}
+                menu.classList.add("hide")
             })
            
             generateDropdown(arr[1])
@@ -791,6 +648,8 @@ function collectionlogger(arr){
    return ++int.increment
     
 }
+//takes array from the collection logger and breaks them down to 
+//each favorite ride or each ride
  function forEachFavorite(array){
      array.forEach(ride=>{
          generateFavoriteList(ride)
@@ -807,11 +666,11 @@ function collectionlogger(arr){
    
 }
   
-
+//these functions generate the dropdowns on the submit form
 function generateDropdown(array){
     
     let dropdown = document.querySelector('#favorite1')
-    dropdown.style={"display":"block;"}
+    dropdown.classList.remove("hide")
     let indexZero=document.createElement('option')
      indexZero.text="Choose Favorite Ride" 
      indexZero.value=0
@@ -840,7 +699,7 @@ function generateDropdown(array){
   
   function generateNextDropdown(array){
     let dropdown = document.querySelector('#favorite2')
-    dropdown.style={"display":"block;"}
+    dropdown.classList.remove("hide")
      let indexZero=document.createElement('option')
      
      indexZero.text="Choose 2nd Favorite Ride" 
@@ -870,7 +729,7 @@ function generateDropdown(array){
    }
    function generateThirdDropdown(array){
     let dropdown = document.querySelector('#favorite3')
-    dropdown.style={"display":"block;"} 
+    dropdown.classList.remove("hide")
     let indexZero=document.createElement('option')
     
     indexZero.text="Choose 3rd Favorite Ride" 
@@ -900,7 +759,7 @@ function generateDropdown(array){
    }
    function generateFourthDropdown(array){
     let dropdown = document.querySelector('#favorite4')
-    dropdown.style={"display":"block;"}
+    dropdown.classList.remove("hide")
     let indexZero=document.createElement('option')
     
     indexZero.text="Choose 4th Favorite Ride" 
@@ -929,7 +788,7 @@ function generateDropdown(array){
    }
    function generateFifthDropdown(array){
     let dropdown = document.querySelector('#favorite5')
-    dropdown.style={"display":"block;"}
+    dropdown.classList.remove("hide")
     let indexZero=document.createElement('option')
     indexZero.value=0
     indexZero.text="Choose 5th Favorite Ride" 
@@ -957,7 +816,7 @@ function generateDropdown(array){
    }
    function generateSixthDropdown(array){
     let dropdown = document.querySelector('#favorite6')
-    dropdown.style={"display":"block;"}
+    dropdown.classList.remove("hide")
     let indexZero=document.createElement('option')
     indexZero.value=0
     indexZero.text="Choose 6th Favorite Ride" 
@@ -989,7 +848,7 @@ function generateDropdown(array){
      indexZero.value=0
      indexZero.text="Choose 7th Favorite Ride" 
      let dropdown = document.querySelector('#favorite7')
-     dropdown.style={"display":"block;"}
+     dropdown.classList.remove("hide")
      dropdown.appendChild(indexZero)
        
    array.forEach(ride=>{
@@ -1017,7 +876,7 @@ function generateDropdown(array){
      indexZero.value=0
      indexZero.text="Choose 8th Favorite Ride" 
      let dropdown = document.querySelector('#favorite8')
-     dropdown.style={"display":"block;"}
+     dropdown.classList.remove("hide")
      dropdown.appendChild(indexZero)
       
    array.forEach(ride=>{
@@ -1045,7 +904,7 @@ function generateDropdown(array){
     indexZero.value=0
     indexZero.text="Choose 9th Favorite Ride" 
     let dropdown = document.querySelector('#favorite9')
-    dropdown.style={"display":"block;"}
+    dropdown.classList.remove("hide")
     dropdown.appendChild(indexZero)
       
    array.forEach(ride=>{
@@ -1074,7 +933,7 @@ function generateDropdown(array){
      indexZero.value=0
      indexZero.text="Choose 10th Favorite Ride" 
      let dropdown = document.querySelector('#favorite10')
-     dropdown.style={"display":"block;"}
+     dropdown.classList.remove("hide")
      dropdown.appendChild(indexZero)
       
    array.forEach(ride=>{
@@ -1087,7 +946,7 @@ function generateDropdown(array){
    })
    
    }
-  
+ //this function puts the favorite list on the DOM with the wait time 
 function generateFavoriteList(favorite){
     
     let row= document.createElement('tr')
@@ -1104,7 +963,7 @@ function generateFavoriteList(favorite){
     row.appendChild(cell3)
     favoriteRideTable.appendChild(row)
 }
-
+//fed from for each ride, checks if the ride is open
 function checkOpen(ride){
  
    
@@ -1119,7 +978,7 @@ function checkOpen(ride){
 }
 
 
-
+//fed from check open renders open rides on the DOM
 function renderOpenRideTable(ride){
     
     if (typeof ride != "undefined" && addOpenRides ){
@@ -1153,6 +1012,8 @@ function renderOpenRides(ride){
     openRideTable.appendChild(row)
 
 }
+//this actually renders all rides on the dom, but not visible, depending on the user's height
+//some rides then become visible
 function renderNotTallRides(ride){
     let row= document.createElement('tr')
     row.classList.add(ride.height)
@@ -1164,7 +1025,7 @@ function renderNotTallRides(ride){
 }
 
 
-
+//this renders rides that are closed, fed from check open
 function renderClosedRideTable(ride){
     if (typeof ride != "undefined" && addClosedRides ){
     closedRidetitle.textContent = "These Rides are Closed"
