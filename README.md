@@ -28,7 +28,7 @@ Once installed and activated you can add:
 to your allow list.
 ## Usage
 
-Once the project loads, the user may select a park to view that specific park's current wait times. Or the user may select a user listed on the page, to view rides they are not tall enough to ride and their favorite rides' wait times. The user can also select to create a new user on the page. The new user form only accepts standard alpha numeric characters and the name cannot match a previously entered name. Once the users enters their name and height, they then have the option to select up to 10 favorite rides. Once a user selects a favorite, then a new list appears allowing the user to then select their next favorite. Each subsequent list, removes previously selected options. When submitted, that user's information become instantly available.
+Once the project loads, the user may select a park to view that specific park's current wait times. Or the user may select a user listed on the page, to view rides they are not tall enough to ride and their favorite rides' wait times. The user can also select to create a new user on the page. The new user form only accepts standard alpha numeric characters and the name cannot match a previously entered name. Once the users enters their name and height, they then have the option to select up to 10 favorite rides. Once a user selects a favorite, then a new list appears allowing the user to then select their next favorite. Each subsequent list, removes previously selected options. When submitted, that user's information become instantly available. 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -38,3 +38,4 @@ Ride times are generated through an open api available through queue-times. For 
 
 ```https://queue-times.com/pages/api```
 
+This project was built and tested using the firefox browser and visual studio code.
