@@ -52,3 +52,28 @@ header{
 .hide{
   display:none;
 }
+.loading{
+  z-index:9;
+  margin:20px;
+  text-align: center; 
+  background-color: gold;
+}
+.names{
+  width: 300px;
+  text-align: center;
+  border: solid black 1px;
+  background-color: white;
+}
+.times{
+  width:50px;
+  text-align: center;
+  border: solid black 1px;
+  background-color: white;
+}
+.tableBorder{
+  border:solid black 1px;
+  background-color: white;
+}
+body{
+  background-color: #c6ceda;
+}

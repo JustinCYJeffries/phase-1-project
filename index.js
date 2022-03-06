@@ -58,7 +58,10 @@ function fetchEpcot(){
     .then(r => r.json())
     .then((r)=>{
         cleanUpFetch(r, "Epcot")
-        })
+      document.querySelector("#loader").classList.add('hide') 
+      form.classList.remove('hide') 
+     
+    })
 }
  function fetchHeightInfo() {
     fetch("http://localhost:3000/rideHeights")
@@ -69,6 +72,10 @@ function fetchEpcot(){
 parkSelectors.addEventListener("click",(e)=> {
     let parkTitle= document.getElementById('parkName')
     let ridePark=document.querySelectorAll("[title]")    
+    closedRideTable.classList.remove("hide")
+    closedRidetitle.classList.remove("hide")
+    openRideTable.classList.remove("hide")
+    openRidetitle.classList.remove("hide")
     ridePark==Array.prototype.slice.call(ridePark)
     parkTitle.textContent=""
     ridePark.forEach(row =>{
@@ -954,10 +961,13 @@ function generateFavoriteList(favorite){
     row.style.display="none"
     let cell1= document.createElement('td')
     cell1.innerHTML= `${favorite.rideValue}`
+    cell1.classList.add('tableBorder')
     let cell2= document.createElement('td')
     cell2.innerHTML= `${favorite.name}`
+    cell2.classList.add('names')
     let cell3= document.createElement('td')
     cell3.innerHTML= `${favorite.wait_time}`
+    cell3.classList.add('times')
     row.appendChild(cell1)
     row.appendChild(cell2)
     row.appendChild(cell3)
@@ -982,6 +992,8 @@ function checkOpen(ride){
 function renderOpenRideTable(ride){
     
     if (typeof ride != "undefined" && addOpenRides ){
+        openRideTable.classList.add("hide")
+        openRidetitle.classList.add("hide")
         openRidetitle.textContent = "These Rides are Open"
         let row= document.createElement('tr')
         let heading1= document.createElement('th')
@@ -1005,7 +1017,9 @@ function renderOpenRides(ride){
     row.style.display="none"
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
+    cell1.classList.add('names')
     let cell2= document.createElement('td')
+    cell2.classList.add('times')
     cell2.innerHTML= `${ride.wait_time}`
     row.appendChild(cell1)
     row.appendChild(cell2)
@@ -1019,6 +1033,7 @@ function renderNotTallRides(ride){
     row.classList.add(ride.height)
     row.style.display="none"
     let cell1= document.createElement('td')
+    cell1.classList.add('names')
     cell1.innerHTML= `${ride.name}`
     row.appendChild(cell1)
     notTallTable.appendChild(row)
@@ -1027,15 +1042,14 @@ function renderNotTallRides(ride){
 
 //this renders rides that are closed, fed from check open
 function renderClosedRideTable(ride){
+    closedRideTable.classList.add("hide")
+    closedRidetitle.classList.add("hide")
     if (typeof ride != "undefined" && addClosedRides ){
     closedRidetitle.textContent = "These Rides are Closed"
     let row= document.createElement('tr')
     let heading1= document.createElement('th')
     heading1.innerHTML= "Ride Name"
-    let heading2= document.createElement('th')
-    heading2.innerHTML= "Wait time"
     row.appendChild(heading1)
-    row.appendChild(heading2)
     closedRideTable.appendChild(row)
     addClosedRides=false;
    
@@ -1051,10 +1065,9 @@ function renderClosedRides(ride){
     row.style.display="none"
     let cell1= document.createElement('td')
     cell1.innerHTML= `${ride.name}`
-    let cell2= document.createElement('td')
-    cell2.innerHTML= `${ride.wait_time}`
+    cell1.classList.add('names')
     row.appendChild(cell1)
-    row.appendChild(cell2)
+    
     closedRideTable.appendChild(row)
    
     }
@@ -1066,6 +1079,8 @@ function renderClosedRides(ride){
     fetchEpcot()
 
     
-
+    
 
 })
+
+

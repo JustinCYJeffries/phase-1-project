@@ -12,7 +12,7 @@
 <header>
     <h3>Disney World Wait Times</h3>
 </header>
-<section id="parkSelectors">
+<section id="parkSelectors" >
     <button type="button" class="button" id="all Parks">All Parks</button>
     <button type="button" class="button" id="Magic Kingdom">Magic Kingdom</button>
     <button type="button" class="button" id="Epcot">Epcot</button>
@@ -39,16 +39,17 @@
         <td><h3 id="favoriteRideTitle" class="header"></h3></td>
     </tr>
     <tr>
-        <td class="header" id="closedRides"></td>
-        <td class="header"  id="openRides"></td>
-        <td class="header" id="notTallEnough"></td>
-        <td class="header" id="favoriteRides"></td>
+        <td class="header" ><table id="closedRides" class='tableBorder'></table></td>
+        <td class="header"  ><table id="openRides" class='tableBorder'></table></td>
+        <td class="header" ><table id="notTallEnough" class='tableBorder'></table></td>
+        <td class="header" ><table id="favoriteRides" class='tableBorder'></table></td>
     </tr>
 </table>
 
 </section>
+<div id="loader" class="loading">Please wait while page loads</div>
 <section>
-    <form id="newUserForm">
+    <form id="newUserForm" class="hide">
         <label for="name">Enter Name</label><br>
         <input type="text" name="name" placeholder="Name"/><br>
         <label for="height">Enter Height</label><br>
