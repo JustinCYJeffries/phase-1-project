@@ -33,4 +33,8 @@ Once the project loads, the user may select a park to view that specific park's 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Resources
+Ride times are generated through an open api available through queue-times. For more information please visit:
+
+```https://queue-times.com/pages/api```
 
