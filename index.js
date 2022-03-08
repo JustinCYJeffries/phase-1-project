@@ -26,21 +26,359 @@ document.addEventListener("DOMContentLoaded", () => {
     const notTallTitle = document.querySelector("#notTallEnoughTitle")
     const nameField = document.getElementById('name')
     //fetch
+
+        //event listeners
+        parkSelectors.addEventListener("click", (e) => {
+
+            let ridePark = document.querySelectorAll("[title]")
+            closedRideTable.classList.remove("hide")
+            closedRidetitle.classList.remove("hide")
+            openRideTable.classList.remove("hide")
+            openRidetitle.classList.remove("hide")
+            ridePark == Array.prototype.slice.call(ridePark)
+            parkTitle.textContent = ""
+            ridePark.forEach(row => {
+                row.style.display = "none"
+                if (row.title === "No special characters or spaces") {
+                    row.style.display = "block"
+                    row.style = "{text_align:center;}"
+                }
     
-function resetTables(){
-    closedRideTable.innerHTML=" "
-    openRideTable.innerHTML=" "
-    favoriteRideTable.innerHTML=" "
-    notTallTable.innerHTML=" "
-    favoriteRideTitle.innerHTML=""
-    parkTitle.innerHTML=""
-    notTallTitle.innerHTML=""
-    resetDropdowns()
-    nameField.value=""
-    document.querySelector('input[name="height"]:checked').checked=false
-}
     
+                else if (e.target.id == "all Parks") {
+                    parkTitle.textContent = "All Parks"
+                    row.style.display = "block"
+                }
+                else if (e.target.id == row.title) {
+                    row.style.display = "block"
+                    parkTitle.textContent = row.title
+    
+                }
+            })
+    
+    
+        })
         
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+    
+    
+            let newUser = {
+                name: e.target.name.value,
+                height: e.target.height.value
+            }
+            if (parseInt(validator(newUser)) != 0) {
+                return alert('Names Must Be Unique')
+            }
+    
+    
+            else if (parseInt(e.target.favorite1.value) === 0) {
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite2.value) === 0) {
+                newUser.favorites = [{
+                    name: e.target.favorite1.value,
+                    rideValue: 1
+                }]
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite3.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite4.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite5.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    },
+                    {
+                        name: e.target.favorite4.value,
+                        rideValue: 4
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite6.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    },
+                    {
+                        name: e.target.favorite4.value,
+                        rideValue: 4
+                    },
+                    {
+                        name: e.target.favorite5.value,
+                        rideValue: 5
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite7.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    },
+                    {
+                        name: e.target.favorite4.value,
+                        rideValue: 4
+                    },
+                    {
+                        name: e.target.favorite5.value,
+                        rideValue: 5
+                    },
+                    {
+                        name: e.target.favorite6.value,
+                        rideValue: 6
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else if (ParseInt(e.target.favorite8.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    },
+                    {
+                        name: e.target.favorite4.value,
+                        rideValue: 4
+                    },
+                    {
+                        name: e.target.favorite5.value,
+                        rideValue: 5
+                    },
+                    {
+                        name: e.target.favorite6.value,
+                        rideValue: 6
+                    },
+                    {
+                        name: e.target.favorite7.value,
+                        rideValue: 7
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite9.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    },
+                    {
+                        name: e.target.favorite4.value,
+                        rideValue: 4
+                    },
+                    {
+                        name: e.target.favorite5.value,
+                        rideValue: 5
+                    },
+                    {
+                        name: e.target.favorite6.value,
+                        rideValue: 6
+                    },
+                    {
+                        name: e.target.favorite7.value,
+                        rideValue: 7
+                    },
+                    {
+                        name: e.target.favorite8.value,
+                        rideValue: 8
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else if (parseInt(e.target.favorite10.value) === 0) {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    },
+                    {
+                        name: e.target.favorite4.value,
+                        rideValue: 4
+                    },
+                    {
+                        name: e.target.favorite5.value,
+                        rideValue: 5
+                    },
+                    {
+                        name: e.target.favorite6.value,
+                        rideValue: 6
+                    },
+                    {
+                        name: e.target.favorite7.value,
+                        rideValue: 7
+                    },
+                    {
+                        name: e.target.favorite8.value,
+                        rideValue: 8
+                    },
+                    {
+                        name: e.target.favorite9.value,
+                        rideValue: 9
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            else {
+                newUser.favorites = [
+                    {
+                        name: e.target.favorite1.value,
+                        rideValue: 1
+                    },
+                    {
+                        name: e.target.favorite2.value,
+                        rideValue: 2
+                    },
+                    {
+                        name: e.target.favorite3.value,
+                        rideValue: 3
+                    },
+                    {
+                        name: e.target.favorite4.value,
+                        rideValue: 4
+                    },
+                    {
+                        name: e.target.favorite5.value,
+                        rideValue: 5
+                    },
+                    {
+                        name: e.target.favorite6.value,
+                        rideValue: 6
+                    },
+                    {
+                        name: e.target.favorite7.value,
+                        rideValue: 7
+                    },
+                    {
+                        name: e.target.favorite8.value,
+                        rideValue: 8
+                    },
+                    {
+                        name: e.target.favorite9.value,
+                        rideValue: 9
+                    },
+                    {
+                        name: e.target.favorite10.value,
+                        rideValue: 10
+                    }
+                ]
+                updateNewUser(newUser)
+            }
+            function updateNewUser(newUser) {
+                console.log(newUser)
+                return fetch('http://localhost:3000/jeffriesFamily', {
+                    method: "POST",
+    
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newUser)
+                }).then(r => r.json())
+                    .then(r => {
+                        resetTables()
+                        addButton(r)
+    
+                    })
+            }
+        })
+        resetButton.addEventListener("click", (e) => {
+            resetDropdowns()
+            generateDropdown(rideData)
+    
+        })
+
+
+    function resetTables() {
+        closedRideTable.innerHTML = " "
+        openRideTable.innerHTML = " "
+        favoriteRideTable.innerHTML = " "
+        notTallTable.innerHTML = " "
+        favoriteRideTitle.innerHTML = ""
+        parkTitle.innerHTML = ""
+        notTallTitle.innerHTML = ""
+        resetDropdowns()
+        nameField.value = ""
+        document.querySelector('input[name="height"]:checked').checked = false
+    }
+
+
     function fetchFamily() {
         fetch("http://localhost:3000/jeffriesFamily")
             .then(r => r.json())
@@ -82,357 +420,12 @@ function resetTables(){
                 form.classList.remove('hide')
 
             })
+            .catch((error) => {
+                alert("Read the readme to resolve", error)
+            })
     }
 
-    //event listeners
-    parkSelectors.addEventListener("click", (e) => {
-       
-        let ridePark = document.querySelectorAll("[title]")
-        closedRideTable.classList.remove("hide")
-        closedRidetitle.classList.remove("hide")
-        openRideTable.classList.remove("hide")
-        openRidetitle.classList.remove("hide")
-        ridePark == Array.prototype.slice.call(ridePark)
-        parkTitle.textContent = ""
-        ridePark.forEach(row => {
-            row.style.display = "none"
-            if(row.title==="No special characters or spaces"){
-                row.style.display = "block"
-                row.style = "{text_align:center;}"
-            }
-            
 
-            else if (e.target.id == "all Parks") {
-                parkTitle.textContent = "All Parks"
-                row.style.display = "block"
-            }
-            else if (e.target.id == row.title) {
-                row.style.display = "block"
-                parkTitle.textContent = row.title
-
-            }
-        })
-
-
-    })
-    function validator(newUser){
-        let j=0
-        members=Array.prototype.slice.call(peopleSelectors.children)
-        for(let i =0; i<members.length;i++){
-
-        if(members[i].name==newUser.name){
-           
-            j++
-            
-        }
-        else j
-    }
-        return j
-}
-    form.addEventListener("submit", (e) => {
-        e.preventDefault()
-       
-        
-        let newUser = {
-            name: e.target.name.value,
-            height: e.target.height.value
-        }
-        if(parseInt(validator(newUser))!=0){
-            return alert('Names Must Be Unique')
-        }
-       
-        
-        else if (parseInt(e.target.favorite1.value) === 0) {
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite2.value) === 0) {
-            newUser.favorites = [{
-                name: e.target.favorite1.value,
-                rideValue: 1
-            }]
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite3.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite4.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite5.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                },
-                {
-                    name: e.target.favorite4.value,
-                    rideValue: 4
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite6.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                },
-                {
-                    name: e.target.favorite4.value,
-                    rideValue: 4
-                },
-                {
-                    name: e.target.favorite5.value,
-                    rideValue: 5
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite7.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                },
-                {
-                    name: e.target.favorite4.value,
-                    rideValue: 4
-                },
-                {
-                    name: e.target.favorite5.value,
-                    rideValue: 5
-                },
-                {
-                    name: e.target.favorite6.value,
-                    rideValue: 6
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else if (ParseInt(e.target.favorite8.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                },
-                {
-                    name: e.target.favorite4.value,
-                    rideValue: 4
-                },
-                {
-                    name: e.target.favorite5.value,
-                    rideValue: 5
-                },
-                {
-                    name: e.target.favorite6.value,
-                    rideValue: 6
-                },
-                {
-                    name: e.target.favorite7.value,
-                    rideValue: 7
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite9.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                },
-                {
-                    name: e.target.favorite4.value,
-                    rideValue: 4
-                },
-                {
-                    name: e.target.favorite5.value,
-                    rideValue: 5
-                },
-                {
-                    name: e.target.favorite6.value,
-                    rideValue: 6
-                },
-                {
-                    name: e.target.favorite7.value,
-                    rideValue: 7
-                },
-                {
-                    name: e.target.favorite8.value,
-                    rideValue: 8
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else if (parseInt(e.target.favorite10.value) === 0) {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                },
-                {
-                    name: e.target.favorite4.value,
-                    rideValue: 4
-                },
-                {
-                    name: e.target.favorite5.value,
-                    rideValue: 5
-                },
-                {
-                    name: e.target.favorite6.value,
-                    rideValue: 6
-                },
-                {
-                    name: e.target.favorite7.value,
-                    rideValue: 7
-                },
-                {
-                    name: e.target.favorite8.value,
-                    rideValue: 8
-                },
-                {
-                    name: e.target.favorite9.value,
-                    rideValue: 9
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        else {
-            newUser.favorites = [
-                {
-                    name: e.target.favorite1.value,
-                    rideValue: 1
-                },
-                {
-                    name: e.target.favorite2.value,
-                    rideValue: 2
-                },
-                {
-                    name: e.target.favorite3.value,
-                    rideValue: 3
-                },
-                {
-                    name: e.target.favorite4.value,
-                    rideValue: 4
-                },
-                {
-                    name: e.target.favorite5.value,
-                    rideValue: 5
-                },
-                {
-                    name: e.target.favorite6.value,
-                    rideValue: 6
-                },
-                {
-                    name: e.target.favorite7.value,
-                    rideValue: 7
-                },
-                {
-                    name: e.target.favorite8.value,
-                    rideValue: 8
-                },
-                {
-                    name: e.target.favorite9.value,
-                    rideValue: 9
-                },
-                {
-                    name: e.target.favorite10.value,
-                    rideValue: 10
-                }
-            ]
-            updateNewUser(newUser)
-        }
-        function updateNewUser(newUser) {
-            console.log(newUser)
-            return fetch('http://localhost:3000/jeffriesFamily', {
-                method: "POST",
-
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(newUser)
-            })  .then(r=>r.json())
-                .then(r =>{
-                    resetTables()
-                    addButton(r)
-                    
-                })
-        }
-    })
-    resetButton.addEventListener("click", (e) => {
-        resetDropdowns()
-        generateDropdown(rideData)
-
-    })
 
     //functions
     //Collects Height Data
@@ -444,178 +437,179 @@ function resetTables(){
         globalThis.over44 = heightData[1].over44
         globalThis.over48 = heightData[0].over48
     }
-    function addButton(member){
+    function addButton(member) {
         let memberButton = document.createElement('button')
-            memberButton.name = member.name
-            memberButton.classList = "button"
-            memberButton.id = member.id
-            memberButton.innerHTML = member.name
-            memberButton.favorites = member.favorites
-            memberButton.height = member.height
-            peopleSelectors.appendChild(memberButton)
-            let favoriteList = member.favorites
-            favoriteList.forEach(name=>{
-                name.memberName=member.name
-                favoriteData.push(name)})
-             favoriteData.forEach(name => {
-                    for (let i = 0; i < rideData.length; i++) {
-                        if (name.name === rideData[i].name) {
-                            Object.assign(name, rideData[i])
-    
-    
-    
-                        }
-    
-                    }
-    
-                })   
-                forEachRide(rideData)
-                forEachFavorite(favoriteData)
-                console.log(favoriteData)
-                generateDropdown(rideData)
-                memberButton.addEventListener("click", (e) => {
-                    let favTable = document.getElementById("favoriteRides")
-                    let notTallTitle = document.querySelector("#notTallEnoughTitle")
-                    notTallTitle.textContent = ""
-                    let tempNoTable = []
-                    tempNoTable = Array.prototype.slice.call(notTallTable.children)
-                    tempNoTable.forEach(row => {
-                        row.style.display = "none"
-                    })
-                    favTable = Array.prototype.slice.call(favTable.children)
-                    favTable.forEach(row => {
-                        row.style.display = "none"
-                    })
-                    clickedUser = {
-                        id: e.target.id,
-                        name: e.target.name
-                    }
-                    if (clickedUser.id == memberButton.id) {
-    
-                        favoriteRideTitle.innerHTML = `${clickedUser.name}'s favorite rides!`
-                        let clicked = document.getElementsByClassName(clickedUser.name)
-                        clicked = Array.prototype.slice.call(clicked)
-                        clicked.forEach(row => {
-                            row.style.display = "block"
-                        })
-    
-    
-                    }
-                    if (e.target.height != "over48") {
-    
-                        notTallTitle.textContent = "Not Tall Enough"
-                    }
-                    let heightOver48 = notTallTable.getElementsByClassName("over48inches")
-                    let heightOver44 = notTallTable.getElementsByClassName("over44inches")
-                    let heightOver40 = notTallTable.getElementsByClassName("over40inches")
-                    let heightOver38 = notTallTable.getElementsByClassName("over38inches")
-                    let heightOver35 = notTallTable.getElementsByClassName("over35inches")
-                    let heightOver32 = notTallTable.getElementsByClassName("over32inches")
-                    if (e.target.height == "over44") {
-                        heightOver48 = Array.prototype.slice.call(heightOver48)
-                        heightOver48.forEach(row => {
-                            row.style.display = "block"
-                        })
-                    }
-                    if (e.target.height === "over40") {
-                        heightOver48 = Array.prototype.slice.call(heightOver48)
-                        heightOver48.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver44 = Array.prototype.slice.call(heightOver44)
-                        heightOver44.forEach(row => {
-                            row.style.display = "block"
-                        })
-                    }
-                    if (e.target.height === "over38") {
-                        heightOver48 = Array.prototype.slice.call(heightOver48)
-                        heightOver48.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver44 = Array.prototype.slice.call(heightOver44)
-                        heightOver44.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver40 = Array.prototype.slice.call(heightOver40)
-                        heightOver40.forEach(row => {
-                            row.style.display = "block"
-                        })
-                    }
-                    if (e.target.height == "over35") {
-                        heightOver48 = Array.prototype.slice.call(heightOver48)
-                        heightOver48.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver44 = Array.prototype.slice.call(heightOver44)
-                        heightOver44.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver40 = Array.prototype.slice.call(heightOver40)
-                        heightOver40.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver38 = Array.prototype.slice.call(heightOver38)
-                        heightOver38.forEach(row => {
-                            row.style.display = "block"
-                        })
-                    }
-                    if (e.target.height == "over32") {
-                        heightOver48 = Array.prototype.slice.call(heightOver48)
-                        heightOver48.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver44 = Array.prototype.slice.call(heightOver44)
-                        heightOver44.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver40 = Array.prototype.slice.call(heightOver40)
-                        heightOver40.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver38 = Array.prototype.slice.call(heightOver38)
-                        heightOver38.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver35 = Array.prototype.slice.call(heightOver35)
-                        heightOver35.forEach(row => {
-                            row.style.display = "block"
-                        })
-                    }
-                    if (e.target.height == "under32") {
-                        heightOver48 = Array.prototype.slice.call(heightOver48)
-                        heightOver48.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver44 = Array.prototype.slice.call(heightOver44)
-                        heightOver44.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver40 = Array.prototype.slice.call(heightOver40)
-                        heightOver40.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver38 = Array.prototype.slice.call(heightOver38)
-                        heightOver38.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver35 = Array.prototype.slice.call(heightOver35)
-                        heightOver35.forEach(row => {
-                            row.style.display = "block"
-                        })
-                        heightOver32 = Array.prototype.slice.call(heightOver32)
-                        heightOver32.forEach(row => {
-                            row.style.display = "block"
-                        })
-                    }
+        memberButton.name = member.name
+        memberButton.classList = "button"
+        memberButton.id = member.id
+        memberButton.innerHTML = member.name
+        memberButton.favorites = member.favorites
+        memberButton.height = member.height
+        peopleSelectors.appendChild(memberButton)
+        let favoriteList = member.favorites
+        favoriteList.forEach(name => {
+            name.memberName = member.name
+            favoriteData.push(name)
+        })
+        favoriteData.forEach(name => {
+            for (let i = 0; i < rideData.length; i++) {
+                if (name.name === rideData[i].name) {
+                    Object.assign(name, rideData[i])
+
+
+
                 }
-    
-    
-    
-                )
+
+            }
+
+        })
+        forEachRide(rideData)
+        forEachFavorite(favoriteData)
+        console.log(favoriteData)
+        generateDropdown(rideData)
+        memberButton.addEventListener("click", (e) => {
+            let favTable = document.getElementById("favoriteRides")
+            let notTallTitle = document.querySelector("#notTallEnoughTitle")
+            notTallTitle.textContent = ""
+            let tempNoTable = []
+            tempNoTable = Array.prototype.slice.call(notTallTable.children)
+            tempNoTable.forEach(row => {
+                row.style.display = "none"
+            })
+            favTable = Array.prototype.slice.call(favTable.children)
+            favTable.forEach(row => {
+                row.style.display = "none"
+            })
+            clickedUser = {
+                id: e.target.id,
+                name: e.target.name
+            }
+            if (clickedUser.id == memberButton.id) {
+
+                favoriteRideTitle.innerHTML = `${clickedUser.name}'s favorite rides!`
+                let clicked = document.getElementsByClassName(clickedUser.name)
+                clicked = Array.prototype.slice.call(clicked)
+                clicked.forEach(row => {
+                    row.style.display = "block"
+                })
+
+
+            }
+            if (e.target.height != "over48") {
+
+                notTallTitle.textContent = "Not Tall Enough"
+            }
+            let heightOver48 = notTallTable.getElementsByClassName("over48inches")
+            let heightOver44 = notTallTable.getElementsByClassName("over44inches")
+            let heightOver40 = notTallTable.getElementsByClassName("over40inches")
+            let heightOver38 = notTallTable.getElementsByClassName("over38inches")
+            let heightOver35 = notTallTable.getElementsByClassName("over35inches")
+            let heightOver32 = notTallTable.getElementsByClassName("over32inches")
+            if (e.target.height == "over44") {
+                heightOver48 = Array.prototype.slice.call(heightOver48)
+                heightOver48.forEach(row => {
+                    row.style.display = "block"
+                })
+            }
+            if (e.target.height === "over40") {
+                heightOver48 = Array.prototype.slice.call(heightOver48)
+                heightOver48.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver44 = Array.prototype.slice.call(heightOver44)
+                heightOver44.forEach(row => {
+                    row.style.display = "block"
+                })
+            }
+            if (e.target.height === "over38") {
+                heightOver48 = Array.prototype.slice.call(heightOver48)
+                heightOver48.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver44 = Array.prototype.slice.call(heightOver44)
+                heightOver44.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver40 = Array.prototype.slice.call(heightOver40)
+                heightOver40.forEach(row => {
+                    row.style.display = "block"
+                })
+            }
+            if (e.target.height == "over35") {
+                heightOver48 = Array.prototype.slice.call(heightOver48)
+                heightOver48.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver44 = Array.prototype.slice.call(heightOver44)
+                heightOver44.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver40 = Array.prototype.slice.call(heightOver40)
+                heightOver40.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver38 = Array.prototype.slice.call(heightOver38)
+                heightOver38.forEach(row => {
+                    row.style.display = "block"
+                })
+            }
+            if (e.target.height == "over32") {
+                heightOver48 = Array.prototype.slice.call(heightOver48)
+                heightOver48.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver44 = Array.prototype.slice.call(heightOver44)
+                heightOver44.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver40 = Array.prototype.slice.call(heightOver40)
+                heightOver40.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver38 = Array.prototype.slice.call(heightOver38)
+                heightOver38.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver35 = Array.prototype.slice.call(heightOver35)
+                heightOver35.forEach(row => {
+                    row.style.display = "block"
+                })
+            }
+            if (e.target.height == "under32") {
+                heightOver48 = Array.prototype.slice.call(heightOver48)
+                heightOver48.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver44 = Array.prototype.slice.call(heightOver44)
+                heightOver44.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver40 = Array.prototype.slice.call(heightOver40)
+                heightOver40.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver38 = Array.prototype.slice.call(heightOver38)
+                heightOver38.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver35 = Array.prototype.slice.call(heightOver35)
+                heightOver35.forEach(row => {
+                    row.style.display = "block"
+                })
+                heightOver32 = Array.prototype.slice.call(heightOver32)
+                heightOver32.forEach(row => {
+                    row.style.display = "block"
+                })
+            }
+        }
+
+
+
+        )
     }
     //Displays Family buttons
     function displayFamily(members) {
-       
+
         members.forEach(member => {
             let memberButton = document.createElement('button')
             memberButton.name = member.name
@@ -634,7 +628,7 @@ function resetTables(){
             }
             memberButton.addEventListener("click", (e) => {
                 let favTable = document.getElementById("favoriteRides")
-               
+
                 notTallTitle.textContent = ""
                 let tempNoTable = []
                 tempNoTable = Array.prototype.slice.call(notTallTable.children)
@@ -826,7 +820,20 @@ function resetTables(){
         rideCollection(rideArray)
     }
 
+    function validator(newUser) {
+        let j = 0
+        members = Array.prototype.slice.call(peopleSelectors.children)
+        for (let i = 0; i < members.length; i++) {
 
+            if (members[i].name == newUser.name) {
+
+                j++
+
+            }
+            else j
+        }
+        return j
+    }
 
     //collects the cleaned up fetches and pushes them into an array
     function rideCollection(array) {
@@ -841,8 +848,8 @@ function resetTables(){
         int.increment = int.increment || 0
 
         if (int.increment == 4) {
-            favoriteData=arr[0]
-            rideData=arr[1]
+            favoriteData = arr[0]
+            rideData = arr[1]
             arr[0].forEach(name => {
                 for (let i = 0; i < arr[1].length; i++) {
                     if (name.name === arr[1][i].name) {
@@ -858,21 +865,21 @@ function resetTables(){
             forEachRide(arr[1])
             forEachFavorite(arr[0])
             generateDropdown(rideData)
-            
+
 
         }
         return ++int.increment
 
     }
-    function resetDropdowns(){
+    function resetDropdowns() {
         let dropdowns = document.querySelectorAll('select')
-                console.log(dropdowns)
-                dropdowns == Array.prototype.slice.call(dropdowns)
-                dropdowns.forEach(menu => {
-                    menu.innerHTML = " "
-                    menu.disabled = false
-                    menu.classList.add("hide")
-                })
+        console.log(dropdowns)
+        dropdowns == Array.prototype.slice.call(dropdowns)
+        dropdowns.forEach(menu => {
+            menu.innerHTML = " "
+            menu.disabled = false
+            menu.classList.add("hide")
+        })
 
     }
     //takes array from the collection logger and breaks them down to 
@@ -1187,7 +1194,7 @@ function resetTables(){
         console.log(favorite)
         let row = document.createElement('tr')
         row.classList.add(favorite.memberName)
-        
+
         row.style.display = "none"
         let cell1 = document.createElement('td')
         cell1.innerHTML = `${favorite.rideValue}`
@@ -1204,22 +1211,22 @@ function resetTables(){
         favoriteRideTable.appendChild(row)
         console.log(favorite.is_open)
 
-        if(parseInt(`${favorite.wait_time}`)>75){
+        if (parseInt(`${favorite.wait_time}`) > 75) {
             cell2.classList.add('highTime')
             cell1.classList.add('highTime')
             cell3.classList.add('highTime')
         }
-        else if(parseInt(`${favorite.wait_time}`)>45){
+        else if (parseInt(`${favorite.wait_time}`) > 45) {
             cell2.classList.add('mediumTime')
             cell1.classList.add('mediumTime')
             cell3.classList.add('mediumTime')
         }
-        else if(favorite.is_open!=true){
-        cell2.classList.add('closedRide')
-        cell1.classList.add('closedRide')
-        cell3.classList.add('closedRide')
+        else if (favorite.is_open != true) {
+            cell2.classList.add('closedRide')
+            cell1.classList.add('closedRide')
+            cell3.classList.add('closedRide')
+        }
     }
-}
     //fed from for each ride, checks if the ride is open
     function checkOpen(ride) {
 
@@ -1243,7 +1250,7 @@ function resetTables(){
             openRidetitle.classList.add("hide")
             openRidetitle.textContent = "These Rides are Open"
             let row = document.createElement('tr')
-            row.style.display='block'
+            row.style.display = 'block'
             let heading1 = document.createElement('td')
             heading1.innerHTML = "<strong>Ride Name</strong>"
             heading1.classList.add('openHeader')
@@ -1271,11 +1278,11 @@ function resetTables(){
         let cell2 = document.createElement('td')
         cell2.classList.add('times')
         cell2.innerHTML = `${ride.wait_time}`
-        if(parseInt(`${ride.wait_time}`)>75){
+        if (parseInt(`${ride.wait_time}`) > 75) {
             cell2.classList.add('highTime')
             cell1.classList.add('highTime')
         }
-        else if(parseInt(`${ride.wait_time}`)>45){
+        else if (parseInt(`${ride.wait_time}`) > 45) {
             cell2.classList.add('mediumTime')
             cell1.classList.add('mediumTime')
         }
@@ -1332,11 +1339,11 @@ function resetTables(){
 
 
     fetchHeightInfo()
-        fetchFamily()
-        fetchAnimalKingdom()
-        fetchMagicKingdom()
-        fetchHollywoodStudios()
-        fetchEpcot()
+    fetchFamily()
+    fetchAnimalKingdom()
+    fetchMagicKingdom()
+    fetchHollywoodStudios()
+    fetchEpcot()
 
 
 
